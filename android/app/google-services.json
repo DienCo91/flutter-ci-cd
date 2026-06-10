@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "44830523194",
+    "project_id": "flutter-ci-cd-5150d",
+    "storage_bucket": "flutter-ci-cd-5150d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44830523194:android:e655d0388c72fedb609a03",
+        "android_client_info": {
+          "package_name": "com.example.batterylevel.production"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpZGios-RX7QIUFgRDylYuiitp_b1Gohg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:44830523194:android:f41a29b680c7785b609a03",
+        "android_client_info": {
+          "package_name": "com.example.batterylevel.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpZGios-RX7QIUFgRDylYuiitp_b1Gohg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

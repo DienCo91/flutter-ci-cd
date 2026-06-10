@@ -1,0 +1,246 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "D327DA0B",
+  "nonRenewingSubscriptions" : [
+    {
+      "displayPrice" : "20",
+      "familyShareable" : false,
+      "internalID" : "436AD93D",
+      "localizations" : [
+        {
+          "description" : "Plan Non Renew Sub 6 month",
+          "displayName" : "Non Renew Sub Plus",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.example.batterylevel.plus_non_renew_sub",
+      "referenceName" : "Plus Non Renew Sub",
+      "type" : "NonRenewingSubscription"
+    },
+    {
+      "displayPrice" : "20",
+      "familyShareable" : false,
+      "internalID" : "1D663A6D",
+      "localizations" : [
+        {
+          "description" : "Plan Non Renew Sub 12 month",
+          "displayName" : "Non Renew Sub Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.example.batterylevel.premium_non_renew_sub",
+      "referenceName" : "Premium Non Renew Sub",
+      "type" : "NonRenewingSubscription"
+    }
+  ],
+  "products" : [
+    {
+      "displayPrice" : "12",
+      "familyShareable" : false,
+      "internalID" : "A5DA01F6",
+      "localizations" : [
+        {
+          "description" : "Plan Premium",
+          "displayName" : "Premium",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.example.batterylevel.premium",
+      "referenceName" : "Premium Consumable",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "8",
+      "familyShareable" : false,
+      "internalID" : "90CDD444",
+      "localizations" : [
+        {
+          "description" : "Plan Plus",
+          "displayName" : "Plus",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.example.batterylevel.plus",
+      "referenceName" : "Plus Consumable",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "500",
+      "familyShareable" : false,
+      "internalID" : "459B7783",
+      "localizations" : [
+        {
+          "description" : "Plan Family",
+          "displayName" : "Family",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.example.batterylevel.family",
+      "referenceName" : "Premium Non Consumable",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "100",
+      "familyShareable" : false,
+      "internalID" : "F2E57343",
+      "localizations" : [
+        {
+          "description" : "Plan Personal",
+          "displayName" : "Personal",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.example.batterylevel.personal",
+      "referenceName" : "Plus Non Consumable",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : true,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : true,
+    "_compatibilityTimeRate" : {
+      "3" : 6
+    },
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 1003
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "D00CB93B",
+      "localizations" : [
+        {
+          "description" : "Plan Auto Renew Sub",
+          "displayName" : "Auto Renew Sub",
+          "locale" : "en_US"
+        }
+      ],
+      "name" : "AutoRenewSub",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "internalID" : "2FD1C7F6",
+              "numberOfPeriods" : 1,
+              "offerID" : "Plan Plus",
+              "paymentMode" : "free",
+              "referenceName" : "Plus",
+              "subscriptionPeriod" : "P1M"
+            }
+          ],
+          "codeOffers" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "eligibility" : [
+                "existing",
+                "new",
+                "expired"
+              ],
+              "internalID" : "4556A22A",
+              "isStackable" : true,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "free",
+              "referenceName" : "Plus ",
+              "subscriptionPeriod" : "P1M"
+            }
+          ],
+          "displayPrice" : "10",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "13909A4D",
+          "introductoryOffers" : [
+
+          ],
+          "localizations" : [
+            {
+              "description" : "Plan Plus",
+              "displayName" : "Plus",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.example.batterylevel.plus_auto_renew_sub",
+          "recurringSubscriptionPeriod" : "P1W",
+          "referenceName" : "Plus Auto Renew Sub",
+          "subscriptionGroupID" : "D00CB93B",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "internalID" : "1B3F089B",
+              "numberOfPeriods" : 1,
+              "offerID" : "Plan Premium",
+              "paymentMode" : "free",
+              "referenceName" : "Premium",
+              "subscriptionPeriod" : "P1M"
+            }
+          ],
+          "codeOffers" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "displayPrice" : "20",
+              "eligibility" : [
+                "existing",
+                "new",
+                "expired"
+              ],
+              "internalID" : "11EF59FF",
+              "isStackable" : true,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "Premium",
+              "subscriptionPeriod" : "P1M"
+            }
+          ],
+          "displayPrice" : "20",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "BF051B26",
+          "introductoryOffers" : [
+
+          ],
+          "localizations" : [
+            {
+              "description" : "Plan Premium",
+              "displayName" : "Premium",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "com.example.batterylevel.premium_auto_renew_sub",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Auto Renew Sub",
+          "subscriptionGroupID" : "D00CB93B",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 5,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.example.batterylevel",
+    "sha256_cert_fingerprints":
+    ["A7:45:9E:78:1A:EB:8E:C9:C3:80:DB:49:61:3C:61:F7:A8:4B:24:C0:5E:1B:45:F7:23:8A:F8:05:07:DD:76:A2"]
+  }
+}]
