@@ -1,12 +1,11 @@
 // ignore_for_file: unused_local_variable
 
-import 'package:batterylevel/pages/setting.dart';
 import 'package:flutter/material.dart';
 
 List<String> _tabs = ["Pending", "Approved", "Cancelled"];
 
 class SliverAppBarExample extends StatefulWidget {
-  const SliverAppBarExample({Key? key}) : super(key: key);
+  const SliverAppBarExample({super.key});
 
   @override
   _SliverAppBarExampleState createState() => _SliverAppBarExampleState();
@@ -21,10 +20,6 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
     _focusNode = FocusNode();
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,6 +50,8 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                       background: ColorFiltered(
                         colorFilter: ColorFilter.mode(Colors.black.withValues(alpha: 0.4), BlendMode.darken),
                         child: Image.network(
+                          cacheWidth: 1080,
+                          cacheHeight: 768,
                           'https://images.pexels.com/photos/7081100/pexels-photo-7081100.jpeg',
                           fit: BoxFit.cover,
                         ),
@@ -143,18 +140,18 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                       ),
                     ],
                   ),
-                  // ListView.builder(
-                  //   key: const PageStorageKey('approved_tab_key'),
-                  //   itemCount: 100,
-                  //   itemBuilder: (context, index) {
-                  //     return Container(
-                  //       padding: const EdgeInsets.all(16),
-                  //       child: ListTile(
-                  //         title: Text('Nội dung thông tin số ${index + 1}', style: const TextStyle(fontSize: 16)),
-                  //       ),
-                  //     );
-                  //   },
-                  // ),
+                  ListView.builder(
+                    key: const PageStorageKey('approved_tab_key'),
+                    itemCount: 100,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        padding: const EdgeInsets.all(16),
+                        child: ListTile(
+                          title: Text('Nội dung thông tin số ${index + 1}', style: const TextStyle(fontSize: 16)),
+                        ),
+                      );
+                    },
+                  ),
                   Center(
                     child: InkWell(
                       onTap: () => _focusNode.unfocus(),

@@ -82,27 +82,24 @@ class _SettingPageState extends State<SettingPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: handleIncrement,
-                        label: Text("Increment", style: TextStyle(color: theme.colorScheme.onPrimary)),
-                        icon: Icon(Icons.add, color: theme.colorScheme.onPrimary),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: theme.colorScheme.primary,
-                        ),
+                    ElevatedButton.icon(
+                      onPressed: handleIncrement,
+                      label: Text("Increment", style: TextStyle(color: theme.colorScheme.onPrimary)),
+                      icon: Icon(Icons.add, color: theme.colorScheme.onPrimary),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        backgroundColor: theme.colorScheme.primary,
                       ),
                     ),
+
                     const SizedBox(width: 8),
-                    Expanded(
-                      child: ElevatedButton.icon(
-                        onPressed: handleDecrement,
-                        label: Text("Decrement"),
-                        icon: Icon(Icons.remove),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                          backgroundColor: theme.colorScheme.onSecondary,
-                        ),
+                    ElevatedButton.icon(
+                      onPressed: handleDecrement,
+                      label: Text("Decrement"),
+                      icon: Icon(Icons.remove),
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                        backgroundColor: theme.colorScheme.onSecondary,
                       ),
                     ),
                   ],

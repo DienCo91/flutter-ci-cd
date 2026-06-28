@@ -8,7 +8,7 @@ import 'package:batterylevel/pages/setting.dart';
 import 'package:batterylevel/todos/repository/todos_repository.dart';
 import 'package:batterylevel/todos/todos.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/widget_previews.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,6 +26,7 @@ void main() async {
   runApp(AppStateContainer(child: const MyApp()));
 }
 
+@Preview(name: 'My Sample Text')
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 

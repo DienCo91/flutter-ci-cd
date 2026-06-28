@@ -1,7 +1,6 @@
 import 'package:batterylevel/sql_lite/model/dog.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
 
 class DogDatabase {
   static final DogDatabase instance = DogDatabase._init();

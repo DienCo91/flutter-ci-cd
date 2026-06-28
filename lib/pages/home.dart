@@ -134,16 +134,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text("Home")),
       body: SafeArea(
+        bottom: true,
         child: Stack(
           children: [
             Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20),
+                  padding: const EdgeInsets.only(bottom: 100),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    textDirection: TextDirection.ltr,
+                    mainAxisAlignment: .center,
+                    mainAxisSize: .min,
+                    textDirection: .ltr,
                     children: <Widget>[
                       if (appFlavor == 'production')
                         Center(child: Text("Production"))

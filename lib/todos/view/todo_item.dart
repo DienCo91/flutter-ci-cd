@@ -83,17 +83,19 @@ class TodoItem extends StatelessWidget {
             title: Text(todo.title ?? ""),
             subtitle: Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('ID: ${todo.id}'),
-                    Text('Completed: ${todo.isComplete}'),
-                    Text(
-                      'Created At: ${DateFormat('HH:mm dd-MM-yyyy').format(DateTime.parse(todo.createdAt!).toLocal())}',
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('ID: ${todo.id}'),
+                      Text('Completed: ${todo.isComplete}'),
+                      Text(
+                        'Created At: ${DateFormat('HH:mm dd-MM-yyyy').format(DateTime.parse(todo.createdAt!).toLocal())}',
+                      ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
+
                 BlocBuilder<TodosBloc, TodosState>(
                   bloc: context.read<TodosBloc>(),
                   builder: (context, state) {

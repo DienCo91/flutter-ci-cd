@@ -20,7 +20,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       emit(state.copyWith(status: WeatherStatus.loading));
       final weather = await _repository.getWeatherByName(name: event.name);
       emit(state.copyWith(status: WeatherStatus.success, weather: weather, name: event.name));
-    } catch (e, st) {
+    } catch (e) {
       emit(state.copyWith(status: WeatherStatus.failure));
     }
   }
