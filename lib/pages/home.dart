@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:batterylevel/counter/view/counter_page.dart';
+import 'package:batterylevel/genui_page/genui_page.dart';
 import 'package:batterylevel/helper/ads_helper.dart';
 import 'package:batterylevel/interacting/use_pigeon.dart';
 import 'package:batterylevel/pages/profile.dart';
@@ -129,6 +130,10 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(context, MaterialPageRoute(builder: (context) => const PurchasePage()));
   }
 
+  void gotoGenUiPage() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const GenUiPage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,6 +168,7 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton(onPressed: _getBatteryLevel, child: Text("Get Battery Level")),
                       ElevatedButton(onPressed: goToSliverAppBar, child: Text('Go to sliver app bar')),
                       ElevatedButton(onPressed: goToSearchWeatherByName, child: Text('Go to Search Weather')),
+                      ElevatedButton(onPressed: gotoGenUiPage, child: Text('GenUI Page')),
                     ],
                   ),
                 ),
