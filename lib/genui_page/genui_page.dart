@@ -180,6 +180,7 @@ class _GenUiPageState extends State<GenUiPage> {
                       style: const TextStyle(color: Colors.black),
                       decoration: const InputDecoration(
                         border: InputBorder.none,
+
                         hintText: "Nhập yêu cầu bài tập của bạn...",
                         hintStyle: TextStyle(color: Colors.grey),
                       ),

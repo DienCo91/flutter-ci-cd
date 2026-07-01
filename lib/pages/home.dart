@@ -94,7 +94,10 @@ class _HomePageState extends State<HomePage> {
   }
 
   void goToProfile() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Profile()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const Profile()),
+    );
   }
 
   void goToDos() {
@@ -102,42 +105,66 @@ class _HomePageState extends State<HomePage> {
   }
 
   void goToCounter() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const CounterPage()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const CounterPage()),
+    );
   }
 
   void goToTimer() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const TimerPage()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const TimerPage()),
+    );
   }
 
   void goToSearchWeatherByName() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => RepositoryProvider(create: (context) => WeatherRepository(), child: const WeatherPage()),
+        builder: (context) => RepositoryProvider(
+          create: (context) => WeatherRepository(),
+          child: const WeatherPage(),
+        ),
       ),
     );
   }
 
   void goToSliverAppBar() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const SliverAppBarExample()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SliverAppBarExample()),
+    );
   }
 
   void goToSqlLite() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const SqlLitePage()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const SqlLitePage()),
+    );
   }
 
   void goToPurchase() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const PurchasePage()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const PurchasePage()),
+    );
   }
 
   void gotoGenUiPage() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const GenUiPage()));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const GenUiPage()),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text("Home")),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text("Home"),
+      ),
       body: SafeArea(
         bottom: true,
         child: Stack(
@@ -156,19 +183,58 @@ class _HomePageState extends State<HomePage> {
                       else if (appFlavor == 'staging')
                         Center(child: Text("Staging")),
                       Text(_text),
-                      ElevatedButton(onPressed: goToDos, child: Text('Go to Todos')),
-                      ElevatedButton(onPressed: goToTimer, child: Text('Go to Timer')),
-                      ElevatedButton(onPressed: onClick, child: Text("Get Text Pigeon")),
-                      ElevatedButton(onPressed: goToSqlLite, child: Text('Go to sqlite')),
-                      ElevatedButton(onPressed: goToProfile, child: Text('Go to Profile')),
-                      ElevatedButton(onPressed: goToCounter, child: Text('Go to Counter')),
-                      ElevatedButton(onPressed: goToPurchase, child: Text('Go to Purchase Consumable')),
-                      ElevatedButton(onPressed: getStatusRam, child: Text("Get Status Ram")),
-                      ElevatedButton(onPressed: getNetworkStatus, child: Text("Get Network Info")),
-                      ElevatedButton(onPressed: _getBatteryLevel, child: Text("Get Battery Level")),
-                      ElevatedButton(onPressed: goToSliverAppBar, child: Text('Go to sliver app bar')),
-                      ElevatedButton(onPressed: goToSearchWeatherByName, child: Text('Go to Search Weather')),
-                      ElevatedButton(onPressed: gotoGenUiPage, child: Text('GenUI Page')),
+                      ElevatedButton(
+                        onPressed: goToDos,
+                        child: Text('Go to Todos'),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToTimer,
+                        child: Text('Go to Timer'),
+                      ),
+                      ElevatedButton(
+                        onPressed: onClick,
+                        child: Text("Get Text Pigeon"),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToSqlLite,
+                        child: Text('Go to sqlite'),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToProfile,
+                        child: Text('Go to Profile'),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToCounter,
+                        child: Text('Go to Counter'),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToPurchase,
+                        child: Text('Go to Purchase Consumable'),
+                      ),
+                      ElevatedButton(
+                        onPressed: getStatusRam,
+                        child: Text("Get Status Ram"),
+                      ),
+                      ElevatedButton(
+                        onPressed: getNetworkStatus,
+                        child: Text("Get Network Info"),
+                      ),
+                      ElevatedButton(
+                        onPressed: _getBatteryLevel,
+                        child: Text("Get Battery Level"),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToSliverAppBar,
+                        child: Text('Go to sliver app bar'),
+                      ),
+                      ElevatedButton(
+                        onPressed: goToSearchWeatherByName,
+                        child: Text('Go to Search Weather'),
+                      ),
+                      ElevatedButton(
+                        onPressed: gotoGenUiPage,
+                        child: Text('GenUI Page'),
+                      ),
                     ],
                   ),
                 ),
