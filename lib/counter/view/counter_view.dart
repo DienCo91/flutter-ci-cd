@@ -32,8 +32,14 @@ class CounterView extends StatelessWidget {
               children: [
                 Text('Counter Page'),
                 Text('Counter Value: ${state.count}'),
-                ElevatedButton(onPressed: handleIncrement, child: Text('Increment')),
-                ElevatedButton(onPressed: handleDecrement, child: Text('Decrement')),
+                ElevatedButton(
+                  onPressed: handleIncrement,
+                  child: Text('Increment'),
+                ),
+                ElevatedButton(
+                  onPressed: handleDecrement,
+                  child: Text('Decrement'),
+                ),
                 ElevatedButton(onPressed: handleReset, child: Text('Reset')),
               ],
             ),

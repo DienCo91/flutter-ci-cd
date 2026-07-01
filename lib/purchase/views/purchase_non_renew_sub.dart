@@ -9,7 +9,9 @@ class PurchaseNonRenewSub extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void handleChoosePlan({required ProductDetails productDetails}) {
-      context.read<PurchaseBloc>().add(ChoosePlanPurchaseEvent(productDetails: productDetails));
+      context.read<PurchaseBloc>().add(
+        ChoosePlanPurchaseEvent(productDetails: productDetails),
+      );
     }
 
     return BlocBuilder<PurchaseBloc, PurchaseState>(
@@ -22,7 +24,11 @@ class PurchaseNonRenewSub extends StatelessWidget {
             Text(
               'Choose Your Plan Non Renew Sub',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             ListView.builder(
               itemExtent: 128,
@@ -30,7 +36,9 @@ class PurchaseNonRenewSub extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: state.plansNonRenewSub.length,
               itemBuilder: (context, index) {
-                final isActive = state.plansNonRenewSub[index].id == state.selectedProductDetail?.id;
+                final isActive =
+                    state.plansNonRenewSub[index].id ==
+                    state.selectedProductDetail?.id;
 
                 return AnimatedScale(
                   duration: const Duration(milliseconds: 180),
@@ -41,13 +49,20 @@ class PurchaseNonRenewSub extends StatelessWidget {
                     duration: const Duration(milliseconds: 100),
                     curve: Curves.easeOut,
                     decoration: BoxDecoration(
-                      color: isActive ? Colors.white.withValues(alpha: 0.55) : Colors.white.withValues(alpha: 0.4),
+                      color: isActive
+                          ? Colors.white.withValues(alpha: 0.55)
+                          : Colors.white.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: isActive ? Colors.white : Colors.transparent, width: isActive ? 2 : 1),
+                      border: Border.all(
+                        color: isActive ? Colors.white : Colors.transparent,
+                        width: isActive ? 2 : 1,
+                      ),
 
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: isActive ? 0.25 : 0.08),
+                          color: Colors.black.withValues(
+                            alpha: isActive ? 0.25 : 0.08,
+                          ),
                           blurRadius: isActive ? 16 : 4,
                           offset: Offset(0, isActive ? 8 : 2),
                         ),
@@ -57,7 +72,9 @@ class PurchaseNonRenewSub extends StatelessWidget {
                       color: Colors.transparent,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(16),
-                        onTap: () => handleChoosePlan(productDetails: state.plansNonRenewSub[index]),
+                        onTap: () => handleChoosePlan(
+                          productDetails: state.plansNonRenewSub[index],
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.all(16),
                           child: AnimatedDefaultTextStyle(
@@ -72,7 +89,8 @@ class PurchaseNonRenewSub extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
                                       child: Text(
@@ -87,7 +105,10 @@ class PurchaseNonRenewSub extends StatelessWidget {
                                 const SizedBox(height: 8),
                                 Text(
                                   state.plansNonRenewSub[index].description,
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                                 SizedBox(height: 8),
                               ],

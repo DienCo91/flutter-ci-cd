@@ -29,7 +29,10 @@ class _SqlLitePageState extends State<SqlLitePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Quản lý Thú Cưng (SQLite)'), backgroundColor: Colors.amber),
+      appBar: AppBar(
+        title: const Text('Quản lý Thú Cưng (SQLite)'),
+        backgroundColor: Colors.amber,
+      ),
       body: FutureBuilder<List<Dog>>(
         future: _dogList,
         builder: (context, snapshot) {
@@ -50,7 +53,10 @@ class _SqlLitePageState extends State<SqlLitePage> {
                 margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 child: ListTile(
                   leading: const CircleAvatar(child: Icon(Icons.pets)),
-                  title: Text(dog.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  title: Text(
+                    dog.name,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   subtitle: Text('Tuổi: ${dog.age}'),
                   trailing: IconButton(
                     icon: const Icon(Icons.delete, color: Colors.red),
@@ -71,7 +77,11 @@ class _SqlLitePageState extends State<SqlLitePage> {
           final randomName = randomNames[Random().nextInt(randomNames.length)];
           final randomAge = Random().nextInt(10) + 1;
 
-          final newDog = Dog(id: Random().nextInt(1000), name: randomName, age: randomAge);
+          final newDog = Dog(
+            id: Random().nextInt(1000),
+            name: randomName,
+            age: randomAge,
+          );
 
           await DogDatabase.instance.insertDog(newDog);
 

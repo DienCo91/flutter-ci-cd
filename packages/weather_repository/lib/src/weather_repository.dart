@@ -10,7 +10,10 @@ class WeatherRepository {
 
   Future<Weather> getWeatherByName({required String name}) async {
     final location = await _openMeteoApiClient.searchByLocationName(name);
-    final weather = await _openMeteoApiClient.getWeather(latitude: location.latitude, longitude: location.longitude);
+    final weather = await _openMeteoApiClient.getWeather(
+      latitude: location.latitude,
+      longitude: location.longitude,
+    );
     return weather;
   }
 }

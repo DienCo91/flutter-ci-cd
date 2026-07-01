@@ -13,7 +13,10 @@ class AdsHelper {
     throw UnsupportedError('Unsupported platform');
   }
 
-  static BannerAd loadBannerAd({required void Function(Ad ad) setState, required bool mounted}) {
+  static BannerAd loadBannerAd({
+    required void Function(Ad ad) setState,
+    required bool mounted,
+  }) {
     return BannerAd(
       size: AdSize.banner,
       adUnitId: AdsHelper.bannerAdUnitId,

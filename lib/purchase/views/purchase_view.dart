@@ -23,7 +23,10 @@ class PurchaseView extends StatelessWidget {
     return SafeArea(
       child: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage(ImageAssets.background), fit: BoxFit.fill),
+          image: DecorationImage(
+            image: AssetImage(ImageAssets.background),
+            fit: BoxFit.fill,
+          ),
         ),
         width: double.infinity,
         height: double.infinity,
@@ -57,8 +60,15 @@ class PurchaseView extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: handleChoosePlan,
-                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.blueAccent)),
-                    child: const Text("Select Plan", style: TextStyle(color: Colors.white, fontSize: 18)),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(
+                        Colors.blueAccent,
+                      ),
+                    ),
+                    child: const Text(
+                      "Select Plan",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
                   ),
                 ),
                 Container(
@@ -66,8 +76,15 @@ class PurchaseView extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: handleOffersCode,
-                    style: ButtonStyle(backgroundColor: WidgetStateProperty.all(Colors.blueAccent)),
-                    child: const Text("Offers Code", style: TextStyle(color: Colors.white, fontSize: 18)),
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all(
+                        Colors.blueAccent,
+                      ),
+                    ),
+                    child: const Text(
+                      "Offers Code",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
+                    ),
                   ),
                 ),
                 SizedBox(height: 16),

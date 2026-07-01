@@ -10,7 +10,9 @@ class WeatherView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void onSearch(String? value) {
-      context.read<WeatherBloc>().add(WeatherByLocationRequested(name: value ?? 'Ha Noi'));
+      context.read<WeatherBloc>().add(
+        WeatherByLocationRequested(name: value ?? 'Ha Noi'),
+      );
     }
 
     return Padding(
@@ -21,7 +23,8 @@ class WeatherView extends StatelessWidget {
           if (state.status == WeatherStatus.failure) {
             return const Center(child: Text('Failed to fetch weather'));
           }
-          if (state.status == WeatherStatus.loading || state.status == WeatherStatus.initial) {
+          if (state.status == WeatherStatus.loading ||
+              state.status == WeatherStatus.initial) {
             return const Center(child: CircularProgressIndicator());
           }
           return Column(
@@ -29,8 +32,12 @@ class WeatherView extends StatelessWidget {
             children: [
               Text('Weather in ${state.name}'),
               Text('Temperature: ${state.weather?.temperature2m ?? 0}°C'),
-              Text('Weather Condition: ${state.weather?.weatherCode.toWeatherCondition().name ?? 0}'),
-              Text('Time: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(state.weather?.time ?? ''))}'),
+              Text(
+                'Weather Condition: ${state.weather?.weatherCode.toWeatherCondition().name ?? 0}',
+              ),
+              Text(
+                'Time: ${DateFormat("HH:mm dd/MM/yyyy").format(DateTime.parse(state.weather?.time ?? ''))}',
+              ),
               SizedBox(height: 16),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +45,9 @@ class WeatherView extends StatelessWidget {
                   Expanded(
                     child: TextField(
                       onSubmitted: onSearch,
-                      decoration: InputDecoration(labelText: 'Search by location'),
+                      decoration: InputDecoration(
+                        labelText: 'Search by location',
+                      ),
                     ),
                   ),
                 ],

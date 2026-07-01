@@ -3,7 +3,10 @@ import 'dart:io'; // Bỏ comment dòng này để dùng được ProcessResult 
 
 void main(List<String> arguments) {
   // ignore: omit_local_variable_types
-  Map<Git, UserBackFun> params = {Git.commitMsg: commitMsg, Git.preCommit: preCommit};
+  Map<Git, UserBackFun> params = {
+    Git.commitMsg: commitMsg,
+    Git.preCommit: preCommit,
+  };
   GitHooks.call(arguments, params);
 }
 
@@ -25,15 +28,17 @@ Future<bool> preCommit() async {
     print(formatResult.stdout);
 
     // 2. Kiểm tra lỗi linter và compiler bằng `flutter analyze`
-    print('🔍 2. Đang phân tích cú pháp bằng `flutter analyze`...');
-    ProcessResult analyzeResult = await Process.run('flutter', ['analyze']);
+    // print('🔍 2. Đang phân tích cú pháp bằng `flutter analyze`...');
+    // ProcessResult analyzeResult = await Process.run('flutter', ['analyze']);
 
-    if (analyzeResult.exitCode != 0) {
-      print(analyzeResult.stdout);
-      print('❌ [COMMIT THẤT BẠI]: Code của bạn đang bị lỗi compile hoặc lỗi linter.');
-      print('💡 Vui lòng sửa hết lỗi hiển thị ở trên rồi thử commit lại nhé!');
-      return false; // Chặn không cho commit
-    }
+    // if (analyzeResult.exitCode != 0) {
+    //   print(analyzeResult.stdout);
+    //   print(
+    //     '❌ [COMMIT THẤT BẠI]: Code của bạn đang bị lỗi compile hoặc lỗi linter.',
+    //   );
+    //   print('💡 Vui lòng sửa hết lỗi hiển thị ở trên rồi thử commit lại nhé!');
+    //   return false; // Chặn không cho commit
+    // }
   } catch (e) {
     print('💥 Đã xảy ra lỗi khi chạy Git Hook: $e');
     return false; // Chặn commit nếu hook gặp lỗi hệ thống

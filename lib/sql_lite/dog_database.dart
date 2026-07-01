@@ -33,7 +33,11 @@ class DogDatabase {
 
   Future<void> insertDog(Dog dog) async {
     final db = await instance.database;
-    await db.insert('dogs', dog.toJson(), conflictAlgorithm: ConflictAlgorithm.replace);
+    await db.insert(
+      'dogs',
+      dog.toJson(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 
   Future<List<Dog>> readAllDogs() async {

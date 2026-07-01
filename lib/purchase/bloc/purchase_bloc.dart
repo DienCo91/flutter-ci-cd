@@ -66,7 +66,9 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
     return super.close();
   }
 
-  void _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) async {
+  void _listenToPurchaseUpdated(
+    List<PurchaseDetails> purchaseDetailsList,
+  ) async {
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
         print("Đang chờ thanh toán...");
@@ -98,10 +100,18 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
     if (state.selectedProductDetail == null) {
       return;
     }
-    bool isConsumable = _productConsumableIds.contains(state.selectedProductDetail!.id);
-    bool isNonConsumable = _productNonConsumableIds.contains(state.selectedProductDetail!.id);
-    bool isNonRenewSub = _productNonRenewSubIds.contains(state.selectedProductDetail!.id);
-    bool isAutoRenewSub = _productAutoRenewSubIds.contains(state.selectedProductDetail!.id);
+    bool isConsumable = _productConsumableIds.contains(
+      state.selectedProductDetail!.id,
+    );
+    bool isNonConsumable = _productNonConsumableIds.contains(
+      state.selectedProductDetail!.id,
+    );
+    bool isNonRenewSub = _productNonRenewSubIds.contains(
+      state.selectedProductDetail!.id,
+    );
+    bool isAutoRenewSub = _productAutoRenewSubIds.contains(
+      state.selectedProductDetail!.id,
+    );
 
     if (isConsumable) {
       add(SubmitProductConsumablePurchaseEvent());
@@ -114,13 +124,18 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
     }
   }
 
-  void _submitConsumable(SubmitProductConsumablePurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _submitConsumable(
+    SubmitProductConsumablePurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     if (state.selectedProductDetail == null) {
       return;
     }
     try {
       await _iap.buyConsumable(
-        purchaseParam: PurchaseParam(productDetails: state.selectedProductDetail!),
+        purchaseParam: PurchaseParam(
+          productDetails: state.selectedProductDetail!,
+        ),
         autoConsume: true,
       );
     } catch (e) {
@@ -128,132 +143,236 @@ class PurchaseBloc extends Bloc<PurchaseEvent, PurchaseState> {
     }
   }
 
-  void _submitNonConsumable(SubmitProductNonConsumablePurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _submitNonConsumable(
+    SubmitProductNonConsumablePurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     if (state.selectedProductDetail == null) {
       return;
     }
     try {
-      await _iap.buyNonConsumable(purchaseParam: PurchaseParam(productDetails: state.selectedProductDetail!));
+      await _iap.buyNonConsumable(
+        purchaseParam: PurchaseParam(
+          productDetails: state.selectedProductDetail!,
+        ),
+      );
     } catch (e) {
       print("error: $e");
     }
   }
 
-  void _submitNonRenewSub(SubmitProductNonRenewSubPurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _submitNonRenewSub(
+    SubmitProductNonRenewSubPurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     if (state.selectedProductDetail == null) {
       return;
     }
     try {
-      await _iap.buyNonConsumable(purchaseParam: PurchaseParam(productDetails: state.selectedProductDetail!));
+      await _iap.buyNonConsumable(
+        purchaseParam: PurchaseParam(
+          productDetails: state.selectedProductDetail!,
+        ),
+      );
     } catch (e) {
       print("error: $e");
     }
   }
 
-  void _submitAutoRenewSub(SubmitProductAutoRenewSubPurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _submitAutoRenewSub(
+    SubmitProductAutoRenewSubPurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     if (state.selectedProductDetail == null) {
       return;
     }
     try {
-      await _iap.buyNonConsumable(purchaseParam: PurchaseParam(productDetails: state.selectedProductDetail!));
+      await _iap.buyNonConsumable(
+        purchaseParam: PurchaseParam(
+          productDetails: state.selectedProductDetail!,
+        ),
+      );
     } catch (e) {
       print("error: $e");
     }
   }
 
-  void _loadProductConsumable(LoadProductConsumerPurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _loadProductConsumable(
+    LoadProductConsumerPurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     emit(state.copyWith(status: PurchaseProductStatus.loading));
     print("_loadProductConsumable");
     final bool isAvailable = await _iap.isAvailable();
     print("isAvailable: $isAvailable");
     if (!isAvailable) {
-      emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "IAP is not available"));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.failure,
+          messageError: "IAP is not available",
+        ),
+      );
       return;
     }
     try {
-      final ProductDetailsResponse response = await _iap.queryProductDetails(_productConsumableIds);
+      final ProductDetailsResponse response = await _iap.queryProductDetails(
+        _productConsumableIds,
+      );
       print("response.productDetails:  ${response.productDetails.length}");
       if (response.productDetails.isEmpty) {
-        emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "Products is empty"));
+        emit(
+          state.copyWith(
+            status: PurchaseProductStatus.failure,
+            messageError: "Products is empty",
+          ),
+        );
         return;
       }
-      emit(state.copyWith(status: PurchaseProductStatus.success, plansConsumable: response.productDetails));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.success,
+          plansConsumable: response.productDetails,
+        ),
+      );
     } catch (e) {
       print("error: $e");
       emit(state.copyWith(status: PurchaseProductStatus.failure));
     }
   }
 
-  void _loadProductNonConsumable(LoadProductNonConsumerPurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _loadProductNonConsumable(
+    LoadProductNonConsumerPurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     emit(state.copyWith(status: PurchaseProductStatus.loading));
     print("_loadProductNonConsumable");
     final bool isAvailable = await _iap.isAvailable();
     print("isAvailable: $isAvailable");
     if (!isAvailable) {
-      emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "IAP is not available"));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.failure,
+          messageError: "IAP is not available",
+        ),
+      );
       return;
     }
     try {
-      final ProductDetailsResponse response = await _iap.queryProductDetails(_productNonConsumableIds);
+      final ProductDetailsResponse response = await _iap.queryProductDetails(
+        _productNonConsumableIds,
+      );
       print("response.productDetails:  ${response.productDetails.length}");
       if (response.productDetails.isEmpty) {
-        emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "Products is empty"));
+        emit(
+          state.copyWith(
+            status: PurchaseProductStatus.failure,
+            messageError: "Products is empty",
+          ),
+        );
         return;
       }
-      emit(state.copyWith(status: PurchaseProductStatus.success, plansNonConsumable: response.productDetails));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.success,
+          plansNonConsumable: response.productDetails,
+        ),
+      );
     } catch (e) {
       print("error: $e");
       emit(state.copyWith(status: PurchaseProductStatus.failure));
     }
   }
 
-  void _loadProductNonRenewSub(LoadProductNonRenewSubPurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _loadProductNonRenewSub(
+    LoadProductNonRenewSubPurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     emit(state.copyWith(status: PurchaseProductStatus.loading));
     print("_loadProductNonRenewSub");
     final bool isAvailable = await _iap.isAvailable();
     print("isAvailable: $isAvailable");
     if (!isAvailable) {
-      emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "IAP is not available"));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.failure,
+          messageError: "IAP is not available",
+        ),
+      );
       return;
     }
     try {
-      final ProductDetailsResponse response = await _iap.queryProductDetails(_productNonRenewSubIds);
+      final ProductDetailsResponse response = await _iap.queryProductDetails(
+        _productNonRenewSubIds,
+      );
       print("response.productDetails:  ${response.productDetails.length}");
       if (response.productDetails.isEmpty) {
-        emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "Products is empty"));
+        emit(
+          state.copyWith(
+            status: PurchaseProductStatus.failure,
+            messageError: "Products is empty",
+          ),
+        );
         return;
       }
-      emit(state.copyWith(status: PurchaseProductStatus.success, plansNonRenewSub: response.productDetails));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.success,
+          plansNonRenewSub: response.productDetails,
+        ),
+      );
     } catch (e) {
       print("error: $e");
       emit(state.copyWith(status: PurchaseProductStatus.failure));
     }
   }
 
-  void _loadProductAutoRenewSub(LoadProductAutoRenewSubPurchaseEvent event, Emitter<PurchaseState> emit) async {
+  void _loadProductAutoRenewSub(
+    LoadProductAutoRenewSubPurchaseEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     emit(state.copyWith(status: PurchaseProductStatus.loading));
     print("_loadProductAutoRenewSub");
     final bool isAvailable = await _iap.isAvailable();
     print("isAvailable: $isAvailable");
     if (!isAvailable) {
-      emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "IAP is not available"));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.failure,
+          messageError: "IAP is not available",
+        ),
+      );
       return;
     }
     try {
-      final ProductDetailsResponse response = await _iap.queryProductDetails(_productAutoRenewSubIds);
+      final ProductDetailsResponse response = await _iap.queryProductDetails(
+        _productAutoRenewSubIds,
+      );
       print("response.productDetails:  ${response.productDetails.length}");
       if (response.productDetails.isEmpty) {
-        emit(state.copyWith(status: PurchaseProductStatus.failure, messageError: "Products is empty"));
+        emit(
+          state.copyWith(
+            status: PurchaseProductStatus.failure,
+            messageError: "Products is empty",
+          ),
+        );
         return;
       }
-      emit(state.copyWith(status: PurchaseProductStatus.success, plansAutoRenewSub: response.productDetails));
+      emit(
+        state.copyWith(
+          status: PurchaseProductStatus.success,
+          plansAutoRenewSub: response.productDetails,
+        ),
+      );
     } catch (e) {
       print("error: $e");
       emit(state.copyWith(status: PurchaseProductStatus.failure));
     }
   }
 
-  void _showOfferCodeSheet(ShowOfferCodeSheetEvent event, Emitter<PurchaseState> emit) async {
+  void _showOfferCodeSheet(
+    ShowOfferCodeSheetEvent event,
+    Emitter<PurchaseState> emit,
+  ) async {
     try {
       if (Platform.isIOS) {
         final InAppPurchaseStoreKitPlatformAddition iosPlatformAddition = _iap

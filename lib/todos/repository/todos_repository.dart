@@ -8,7 +8,12 @@ class TodosRepository {
     try {
       final res = await dio.get(
         _baseUrl,
-        queryParameters: {"page": page, "limit": limit, "sortBy": "createdAt", "order": "desc"},
+        queryParameters: {
+          "page": page,
+          "limit": limit,
+          "sortBy": "createdAt",
+          "order": "desc",
+        },
       );
       return (res.data as List).map((e) => Todo.fromJson(e)).toList();
     } catch (e) {

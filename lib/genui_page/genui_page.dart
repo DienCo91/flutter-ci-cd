@@ -23,7 +23,9 @@ class _GenUiPageState extends State<GenUiPage> {
     super.initState();
     _textController = TextEditingController();
 
-    final catalog = BasicCatalogItems.asCatalog().copyWith(newItems: [riddleCard]);
+    final catalog = BasicCatalogItems.asCatalog().copyWith(
+      newItems: [riddleCard],
+    );
 
     _surfaceController = SurfaceController(catalogs: [catalog]);
 
@@ -51,7 +53,9 @@ class _GenUiPageState extends State<GenUiPage> {
     _transportAdapter = A2uiTransportAdapter(
       onSend: (message) async {
         try {
-          final responseStream = chat.sendMessageStream(Content.text(message.text));
+          final responseStream = chat.sendMessageStream(
+            Content.text(message.text),
+          );
           await for (final chunk in responseStream) {
             final chunkText = chunk.text;
             if (chunkText != null) {
@@ -65,7 +69,10 @@ class _GenUiPageState extends State<GenUiPage> {
       },
     );
 
-    _conversation = Conversation(controller: _surfaceController, transport: _transportAdapter);
+    _conversation = Conversation(
+      controller: _surfaceController,
+      transport: _transportAdapter,
+    );
 
     _conversation.events.listen((event) {
       if (event is ConversationSurfaceAdded) {
@@ -108,7 +115,9 @@ class _GenUiPageState extends State<GenUiPage> {
     try {
       await _conversation.sendRequest(ChatMessage.user(msg));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Lỗi: $e')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Lỗi: $e')));
     } finally {
       setState(() {
         _isLoading = false;
@@ -119,12 +128,19 @@ class _GenUiPageState extends State<GenUiPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Gen UI - Workout Expert"), elevation: 1),
+      appBar: AppBar(
+        title: const Text("Gen UI - Workout Expert"),
+        elevation: 1,
+      ),
       body: Column(
         children: [
           Expanded(
             child: _surfaceIds.isEmpty
-                ? const Center(child: Text("Nhập mục tiêu tập luyện (VD: Các bài tập cơ bụng)"))
+                ? const Center(
+                    child: Text(
+                      "Nhập mục tiêu tập luyện (VD: Các bài tập cơ bụng)",
+                    ),
+                  )
                 : ListView.builder(
                     padding: const EdgeInsets.all(8),
                     itemCount: _surfaceIds.length,
@@ -132,7 +148,9 @@ class _GenUiPageState extends State<GenUiPage> {
                       final id = _surfaceIds[index];
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: Surface(surfaceContext: _surfaceController.contextFor(id)),
+                        child: Surface(
+                          surfaceContext: _surfaceController.contextFor(id),
+                        ),
                       );
                     },
                   ),
@@ -144,7 +162,11 @@ class _GenUiPageState extends State<GenUiPage> {
             decoration: BoxDecoration(
               color: Colors.white,
               boxShadow: [
-                BoxShadow(color: Colors.black.withValues(alpha: 0.05), blurRadius: 4, offset: const Offset(0, -2)),
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.05),
+                  blurRadius: 4,
+                  offset: const Offset(0, -2),
+                ),
               ],
             ),
             child: Row(

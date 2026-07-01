@@ -18,7 +18,11 @@ class _ProfileState extends State<Profile> {
 
   void handleBackToHome() {
     // Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-    Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => const HomePage()), (route) => false);
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => const HomePage()),
+      (route) => false,
+    );
   }
 
   void handleChangeColor(Color? color, BuildContext context) {
@@ -35,7 +39,10 @@ class _ProfileState extends State<Profile> {
     final color = ThemeProvider.of(context)?.themeColor;
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text("Profile")),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        title: Text("Profile"),
+      ),
       body: Container(
         color: color,
         child: Center(
@@ -44,9 +51,18 @@ class _ProfileState extends State<Profile> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text("User ID: ${widget.userId}"),
-              ElevatedButton(onPressed: handleGotoSetting, child: Text("Go to Setting Page")),
-              ElevatedButton(onPressed: handleBackToHome, child: Text("Back to Home Page")),
-              ElevatedButton(onPressed: () => handleChangeColor(color, context), child: Text("Change Color")),
+              ElevatedButton(
+                onPressed: handleGotoSetting,
+                child: Text("Go to Setting Page"),
+              ),
+              ElevatedButton(
+                onPressed: handleBackToHome,
+                child: Text("Back to Home Page"),
+              ),
+              ElevatedButton(
+                onPressed: () => handleChangeColor(color, context),
+                child: Text("Change Color"),
+              ),
             ],
           ),
         ),
@@ -54,4 +70,5 @@ class _ProfileState extends State<Profile> {
     );
   }
 }
+
 // adb shell am start -a android.intent.action.VIEW -d "interacting://deeplink.vn/profile/1234" com.example.batterylevel

@@ -80,16 +80,25 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple, brightness: Brightness.dark),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.purple,
+          brightness: Brightness.dark,
+        ),
 
-        textTheme: TextTheme(displayLarge: const TextStyle(fontSize: 72, fontWeight: FontWeight.bold)),
+        textTheme: TextTheme(
+          displayLarge: const TextStyle(
+            fontSize: 72,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       initialRoute: '/',
       onGenerateRoute: (settings) {
         final name = settings.name ?? '';
         final uri = Uri.parse(name);
 
-        if (uri.pathSegments.isNotEmpty && uri.pathSegments.first == 'profile') {
+        if (uri.pathSegments.isNotEmpty &&
+            uri.pathSegments.first == 'profile') {
           String? id;
           if (uri.pathSegments.length > 1) {
             id = uri.pathSegments[1];
@@ -99,7 +108,10 @@ class _MyAppState extends State<MyApp> {
         if (name == '/todo') {
           return MaterialPageRoute(
             builder: (context) {
-              return RepositoryProvider(create: (context) => TodosRepository(), child: const TodosPage());
+              return RepositoryProvider(
+                create: (context) => TodosRepository(),
+                child: const TodosPage(),
+              );
             },
           );
         }

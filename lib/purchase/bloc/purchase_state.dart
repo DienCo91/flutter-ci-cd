@@ -29,6 +29,7 @@ class PurchaseState {
       ..plansNonRenewSub = plansNonRenewSub ?? this.plansNonRenewSub
       ..plansAutoRenewSub = plansAutoRenewSub ?? this.plansAutoRenewSub
       ..plansNonConsumable = plansNonConsumable ?? this.plansNonConsumable
-      ..selectedProductDetail = selectedProductDetail ?? this.selectedProductDetail;
+      ..selectedProductDetail =
+          selectedProductDetail ?? this.selectedProductDetail;
   }
 }

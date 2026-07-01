@@ -9,9 +9,15 @@ class PlanPurchase {
   final String? description;
   final String? price;
 
-  PlanPurchase({required this.id, required this.name, this.description, this.price});
+  PlanPurchase({
+    required this.id,
+    required this.name,
+    this.description,
+    this.price,
+  });
 
-  factory PlanPurchase.fromJson(Map<String, dynamic> json) => _$PlanPurchaseFromJson(json);
+  factory PlanPurchase.fromJson(Map<String, dynamic> json) =>
+      _$PlanPurchaseFromJson(json);
 
   Map<String, dynamic> toJson() => _$PlanPurchaseToJson(this);
 

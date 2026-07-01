@@ -4,10 +4,18 @@ import 'package:json_schema_builder/json_schema_builder.dart';
 
 final schema = S.object(
   properties: {
-    'question': S.string(description: 'Tiêu đề của mẹo hoặc chế độ gymer (Ví dụ: 🏋️ MẸO SQUAT).'),
-    'answer': S.string(description: 'Nội dung chi tiết hướng dẫn thực hiện tác vụ.'),
-    'category': S.string(description: 'Phân loại mẹo: "Tập Luyện", "Dinh Dưỡng", "Nghỉ Ngơi".'),
-    'hint': S.string(description: 'Một lưu ý nhỏ hoặc cảnh báo nhanh trước khi xem chi tiết.'),
+    'question': S.string(
+      description: 'Tiêu đề của mẹo hoặc chế độ gymer (Ví dụ: 🏋️ MẸO SQUAT).',
+    ),
+    'answer': S.string(
+      description: 'Nội dung chi tiết hướng dẫn thực hiện tác vụ.',
+    ),
+    'category': S.string(
+      description: 'Phân loại mẹo: "Tập Luyện", "Dinh Dưỡng", "Nghỉ Ngơi".',
+    ),
+    'hint': S.string(
+      description: 'Một lưu ý nhỏ hoặc cảnh báo nhanh trước khi xem chi tiết.',
+    ),
   },
   required: ['question', 'answer'],
 );
@@ -45,7 +53,11 @@ final riddleCard = CatalogItem(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
-                BoxShadow(color: Colors.black.withValues(alpha: 0.06), blurRadius: 14, offset: const Offset(0, 6)),
+                BoxShadow(
+                  color: Colors.black.withValues(alpha: 0.06),
+                  blurRadius: 14,
+                  offset: const Offset(0, 6),
+                ),
               ],
             ),
             child: ClipRRect(
@@ -57,7 +69,10 @@ final riddleCard = CatalogItem(
                   // Thanh tiêu đề trên cùng (Header Bar)
                   Container(
                     color: themeColor,
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 10,
+                    ),
                     width: double.infinity,
                     child: Row(
                       children: [
@@ -95,11 +110,21 @@ final riddleCard = CatalogItem(
 
                         if (hint != null && !isLocalExpanded) ...[
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                            decoration: BoxDecoration(color: Colors.amber[50], borderRadius: BorderRadius.circular(8)),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.amber[50],
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                             child: Row(
                               children: [
-                                Icon(Icons.warning_amber_rounded, size: 16, color: Colors.amber[800]),
+                                Icon(
+                                  Icons.warning_amber_rounded,
+                                  size: 16,
+                                  color: Colors.amber[800],
+                                ),
                                 const SizedBox(width: 6),
                                 Expanded(
                                   child: Text(
@@ -125,17 +150,32 @@ final riddleCard = CatalogItem(
                               });
                             },
                             icon: Icon(
-                              isLocalExpanded ? Icons.keyboard_arrow_up : Icons.keyboard_arrow_down,
+                              isLocalExpanded
+                                  ? Icons.keyboard_arrow_up
+                                  : Icons.keyboard_arrow_down,
                               color: themeColor,
                             ),
                             label: Text(
-                              isLocalExpanded ? "Thu gọn hướng dẫn" : "Xem hướng dẫn chi tiết",
-                              style: TextStyle(color: themeColor, fontWeight: FontWeight.bold, fontSize: 14),
+                              isLocalExpanded
+                                  ? "Thu gọn hướng dẫn"
+                                  : "Xem hướng dẫn chi tiết",
+                              style: TextStyle(
+                                color: themeColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
                             ),
                             style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                              backgroundColor: themeColor.withValues(alpha: 0.08),
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 20,
+                                vertical: 10,
+                              ),
+                              backgroundColor: themeColor.withValues(
+                                alpha: 0.08,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
                             ),
                           ),
                         ),
@@ -147,7 +187,8 @@ final riddleCard = CatalogItem(
                             width: double.infinity,
                             child: isLocalExpanded
                                 ? Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(height: 16),
                                       const Divider(height: 1),
@@ -164,7 +205,11 @@ final riddleCard = CatalogItem(
                                       const SizedBox(height: 8),
                                       Text(
                                         instructions,
-                                        style: const TextStyle(fontSize: 15, color: Color(0xFF334155), height: 1.5),
+                                        style: const TextStyle(
+                                          fontSize: 15,
+                                          color: Color(0xFF334155),
+                                          height: 1.5,
+                                        ),
                                       ),
                                     ],
                                   )

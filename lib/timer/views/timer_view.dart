@@ -13,7 +13,9 @@ class _TimerViewState extends State<TimerView> {
   @override
   void initState() {
     super.initState();
-    context.read<TimerBloc>().add(TimerInitialized(second: Duration(minutes: 120).inSeconds));
+    context.read<TimerBloc>().add(
+      TimerInitialized(second: Duration(minutes: 120).inSeconds),
+    );
   }
 
   void handleStart() {
@@ -32,7 +34,8 @@ class _TimerViewState extends State<TimerView> {
   Widget build(BuildContext context) {
     return BlocBuilder<TimerBloc, TimerState>(
       bloc: context.read<TimerBloc>(),
-      buildWhen: (previous, current) => previous.secondState != current.secondState,
+      buildWhen: (previous, current) =>
+          previous.secondState != current.secondState,
       builder: (context, state) {
         return Scaffold(
           body: SizedBox(
@@ -47,11 +50,20 @@ class _TimerViewState extends State<TimerView> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ElevatedButton(onPressed: handleStart, child: Text('Start')),
+                    ElevatedButton(
+                      onPressed: handleStart,
+                      child: Text('Start'),
+                    ),
                     SizedBox(width: 16),
-                    ElevatedButton(onPressed: handlePause, child: Text('Pause')),
+                    ElevatedButton(
+                      onPressed: handlePause,
+                      child: Text('Pause'),
+                    ),
                     SizedBox(width: 16),
-                    ElevatedButton(onPressed: handleReset, child: Text('Reset')),
+                    ElevatedButton(
+                      onPressed: handleReset,
+                      child: Text('Reset'),
+                    ),
                   ],
                 ),
               ],

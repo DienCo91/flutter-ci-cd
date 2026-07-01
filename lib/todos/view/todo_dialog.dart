@@ -33,7 +33,10 @@ class _TodoDialogState extends State<TodoDialog> {
 
   void onSubmit() async {
     if (widget.todo != null) {
-      final newTodo = widget.todo!.copyWith(title: controller.text, isComplete: isChecked);
+      final newTodo = widget.todo!.copyWith(
+        title: controller.text,
+        isComplete: isChecked,
+      );
 
       widget.mainContext.read<TodosBloc>().add(TodoUpdate(todo: newTodo));
     } else {
@@ -55,15 +58,22 @@ class _TodoDialogState extends State<TodoDialog> {
       bloc: widget.mainContext.read<TodosBloc>(),
       listenWhen: (previous, current) {
         return previous.actionStatus == TodoActionStatus.loading &&
-            (current.actionStatus == TodoActionStatus.success || current.actionStatus == TodoActionStatus.failure);
+            (current.actionStatus == TodoActionStatus.success ||
+                current.actionStatus == TodoActionStatus.failure);
       },
       listener: (context, state) {
         Navigator.of(context).pop();
         if (state.actionStatus == TodoActionStatus.failure) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error ?? "")));
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(state.error ?? "")));
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(duration: Duration(milliseconds: 500), content: Text("Success"), backgroundColor: Colors.green),
+            SnackBar(
+              duration: Duration(milliseconds: 500),
+              content: Text("Success"),
+              backgroundColor: Colors.green,
+            ),
           );
         }
       },
@@ -77,7 +87,11 @@ class _TodoDialogState extends State<TodoDialog> {
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                TextField(controller: controller, autofocus: true, onSubmitted: (value) {}),
+                TextField(
+                  controller: controller,
+                  autofocus: true,
+                  onSubmitted: (value) {},
+                ),
                 SizedBox(height: 8),
                 GestureDetector(
                   onTap: () => setState(() {

@@ -11,7 +11,8 @@ class SliverAppBarExample extends StatefulWidget {
   _SliverAppBarExampleState createState() => _SliverAppBarExampleState();
 }
 
-class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTickerProviderStateMixin {
+class _SliverAppBarExampleState extends State<SliverAppBarExample>
+    with SingleTickerProviderStateMixin {
   late FocusNode _focusNode;
 
   @override
@@ -19,7 +20,6 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
     super.initState();
     _focusNode = FocusNode();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +41,24 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                     backgroundColor: Colors.purple[300],
                     flexibleSpace: FlexibleSpaceBar(
                       collapseMode: CollapseMode.pin,
-                      stretchModes: const [StretchMode.zoomBackground, StretchMode.fadeTitle],
+                      stretchModes: const [
+                        StretchMode.zoomBackground,
+                        StretchMode.fadeTitle,
+                      ],
                       centerTitle: true,
                       title: const Text(
                         'Giới thiệu thông tin',
-                        style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       background: ColorFiltered(
-                        colorFilter: ColorFilter.mode(Colors.black.withValues(alpha: 0.4), BlendMode.darken),
+                        colorFilter: ColorFilter.mode(
+                          Colors.black.withValues(alpha: 0.4),
+                          BlendMode.darken,
+                        ),
                         child: Image.network(
                           cacheWidth: 1080,
                           cacheHeight: 768,
@@ -74,7 +84,10 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                           child: TextField(
                             autofocus: false,
                             focusNode: _focusNode,
-                            style: const TextStyle(fontSize: 16, color: Colors.black),
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.black,
+                            ),
                             decoration: InputDecoration(
                               hintText: 'Tìm kiếm',
 
@@ -102,20 +115,23 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                         width: double.infinity,
                         'https://images.pexels.com/photos/1519753/pexels-photo-1519753.jpeg',
                         fit: BoxFit.cover,
-                        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                          if (wasSynchronouslyLoaded) {
-                            return child;
-                          }
-                          return SizedBox(
-                            height: 200,
-                            child: Center(
-                              child: AnimatedSwitcher(
-                                duration: const Duration(milliseconds: 500),
-                                child: frame != null ? child : const CircularProgressIndicator(),
-                              ),
-                            ),
-                          );
-                        },
+                        frameBuilder:
+                            (context, child, frame, wasSynchronouslyLoaded) {
+                              if (wasSynchronouslyLoaded) {
+                                return child;
+                              }
+                              return SizedBox(
+                                height: 200,
+                                child: Center(
+                                  child: AnimatedSwitcher(
+                                    duration: const Duration(milliseconds: 500),
+                                    child: frame != null
+                                        ? child
+                                        : const CircularProgressIndicator(),
+                                  ),
+                                ),
+                              );
+                            },
                       ),
                       Expanded(
                         child: ListView.builder(
@@ -129,10 +145,16 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                                   _focusNode.unfocus();
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const SliverAppBarExample()),
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SliverAppBarExample(),
+                                    ),
                                   );
                                 },
-                                title: Text('Nội dung thông tin số ${index + 1}', style: const TextStyle(fontSize: 16)),
+                                title: Text(
+                                  'Nội dung thông tin số ${index + 1}',
+                                  style: const TextStyle(fontSize: 16),
+                                ),
                               ),
                             );
                           },
@@ -147,7 +169,10 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                       return Container(
                         padding: const EdgeInsets.all(16),
                         child: ListTile(
-                          title: Text('Nội dung thông tin số ${index + 1}', style: const TextStyle(fontSize: 16)),
+                          title: Text(
+                            'Nội dung thông tin số ${index + 1}',
+                            style: const TextStyle(fontSize: 16),
+                          ),
                         ),
                       );
                     },
@@ -161,7 +186,10 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample> with SingleTi
                           border: Border.all(color: Colors.grey),
                           borderRadius: BorderRadius.circular(8.0),
                         ),
-                        child: const Text('Nội dung thông tin số 1', style: TextStyle(fontSize: 16)),
+                        child: const Text(
+                          'Nội dung thông tin số 1',
+                          style: TextStyle(fontSize: 16),
+                        ),
                       ),
                     ),
                   ),
@@ -188,7 +216,11 @@ class _SliverTabBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => _tabBar.preferredSize.height + 54.0;
 
   @override
-  Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) {
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
     return Container(
       color: Colors.white,
       child: Column(children: [_tabBar, _widget]),
