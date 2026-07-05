@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 List<String> _tabs = ["Pending", "Approved", "Cancelled"];
 
@@ -143,13 +144,7 @@ class _SliverAppBarExampleState extends State<SliverAppBarExample>
                               child: ListTile(
                                 onTap: () {
                                   _focusNode.unfocus();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const SliverAppBarExample(),
-                                    ),
-                                  );
+                                  context.push('/sliver');
                                 },
                                 title: Text(
                                   'Nội dung thông tin số ${index + 1}',
