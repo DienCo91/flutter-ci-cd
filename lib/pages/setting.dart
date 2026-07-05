@@ -2,6 +2,7 @@ import 'package:batterylevel/cubit/counter_cubit.dart';
 import 'package:batterylevel/cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -15,7 +16,7 @@ class _SettingPageState extends State<SettingPage> {
   final themeCubit = ThemeCubit();
 
   void handleBackToHome() {
-    Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+    context.go('/');
   }
 
   void handleIncrement() {

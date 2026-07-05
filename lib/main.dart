@@ -2,14 +2,11 @@ import 'dart:async';
 
 import 'package:batterylevel/cubit/simple_bloc_observer.dart';
 import 'package:batterylevel/layout/app_state_container.dart';
-import 'package:batterylevel/pages/home.dart';
-import 'package:batterylevel/pages/profile.dart';
-import 'package:batterylevel/pages/setting.dart';
-import 'package:batterylevel/todos/repository/todos_repository.dart';
-import 'package:batterylevel/todos/todos.dart';
+import 'package:batterylevel/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
@@ -17,10 +14,11 @@ import 'firebase_options.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  usePathUrlStrategy();
+
   unawaited(MobileAds.instance.initialize());
 
   Bloc.observer = SimpleBlocObserver();
-  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(AppStateContainer(child: const MyApp()));
@@ -77,14 +75,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           seedColor: Colors.purple,
           brightness: Brightness.dark,
         ),
-
         textTheme: TextTheme(
           displayLarge: const TextStyle(
             fontSize: 72,
@@ -92,39 +90,6 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
-      initialRoute: '/',
-      onGenerateRoute: (settings) {
-        final name = settings.name ?? '';
-        final uri = Uri.parse(name);
-
-        if (uri.pathSegments.isNotEmpty &&
-            uri.pathSegments.first == 'profile') {
-          String? id;
-          if (uri.pathSegments.length > 1) {
-            id = uri.pathSegments[1];
-          }
-          return MaterialPageRoute(builder: (context) => Profile(userId: id));
-        }
-        if (name == '/todo') {
-          return MaterialPageRoute(
-            builder: (context) {
-              return RepositoryProvider(
-                create: (context) => TodosRepository(),
-                child: const TodosPage(),
-              );
-            },
-          );
-        }
-
-        if (name == '/') {
-          return MaterialPageRoute(builder: (context) => const HomePage());
-        }
-        if (name == '/setting') {
-          return MaterialPageRoute(builder: (context) => const SettingPage());
-        }
-
-        return null;
-      },
       debugShowCheckedModeBanner: false,
     );
   }

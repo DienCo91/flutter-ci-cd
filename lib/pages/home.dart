@@ -1,20 +1,11 @@
 import 'dart:async';
 
-import 'package:batterylevel/counter/view/counter_page.dart';
-import 'package:batterylevel/genui_page/genui_page.dart';
 import 'package:batterylevel/helper/ads_helper.dart';
 import 'package:batterylevel/interacting/use_pigeon.dart';
-import 'package:batterylevel/pages/profile.dart';
-import 'package:batterylevel/purchase/views/purchase_page.dart';
-import 'package:batterylevel/scroll_advance/sliver_app_bar.dart';
-import 'package:batterylevel/sql_lite/sql_lite_page.dart';
-import 'package:batterylevel/timer/views/timer_page.dart';
-import 'package:batterylevel/weather/view/weather_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:weather_repository/weather_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -94,68 +85,39 @@ class _HomePageState extends State<HomePage> {
   }
 
   void goToProfile() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const Profile()),
-    );
+    context.push('/profile');
   }
 
   void goToDos() {
-    Navigator.pushNamed(context, '/todo');
+    context.push('/todo');
   }
 
   void goToCounter() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const CounterPage()),
-    );
+    context.push('/counter');
   }
 
   void goToTimer() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const TimerPage()),
-    );
+    context.push('/timer');
   }
 
   void goToSearchWeatherByName() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => RepositoryProvider(
-          create: (context) => WeatherRepository(),
-          child: const WeatherPage(),
-        ),
-      ),
-    );
+    context.push('/weather');
   }
 
   void goToSliverAppBar() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SliverAppBarExample()),
-    );
+    context.push('/sliver');
   }
 
   void goToSqlLite() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const SqlLitePage()),
-    );
+    context.push('/sqlite');
   }
 
   void goToPurchase() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const PurchasePage()),
-    );
+    context.push('/purchase');
   }
 
   void gotoGenUiPage() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const GenUiPage()),
-    );
+    context.push('/genui');
   }
 
   @override
