@@ -15,7 +15,12 @@ class Todo {
 
   static const jsonSchema = _$TodoJsonSchema;
 
-  Todo copyWith({String? id, String? title, String? createdAt, bool? isComplete}) {
+  Todo copyWith({
+    String? id,
+    String? title,
+    String? createdAt,
+    bool? isComplete,
+  }) {
     return Todo(
       id: id ?? this.id,
       title: title ?? this.title,

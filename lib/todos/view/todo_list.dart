@@ -27,7 +27,9 @@ class _TodoListState extends State<TodoList> {
     final isLoaded = bloc.state.status == TodosStatus.success;
 
     final nearBottom =
-        _scrollController.hasClients && _scrollController.offset >= _scrollController.position.maxScrollExtent - 200;
+        _scrollController.hasClients &&
+        _scrollController.offset >=
+            _scrollController.position.maxScrollExtent - 200;
 
     if (nearBottom && isLoadMore && isLoaded) {
       final nextPage = bloc.state.page + 1;
@@ -45,7 +47,9 @@ class _TodoListState extends State<TodoList> {
         return ListView.builder(
           controller: _scrollController,
 
-          itemCount: state.todos.length + (state.status == TodosStatus.loading ? 1 : 0),
+          itemCount:
+              state.todos.length +
+              (state.status == TodosStatus.loading ? 1 : 0),
           itemBuilder: (context, index) {
             if (index >= state.todos.length) {
               return const Padding(

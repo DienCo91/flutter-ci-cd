@@ -1,0 +1,10 @@
+{
+  "[dart]": {
+    "editor.formatOnSave": true, 
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit" 
+    },
+    "editor.lineEnding": "\n",
+  },
+  "dart.lineLength": 80
+}

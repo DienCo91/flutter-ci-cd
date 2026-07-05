@@ -20,6 +20,10 @@ class _AppStateContainerState extends State<AppStateContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return ThemeProvider(themeColor: _currentColor, onColorChange: changeToBlue, child: widget.child);
+    return ThemeProvider(
+      themeColor: _currentColor,
+      onColorChange: changeToBlue,
+      child: widget.child,
+    );
   }
 }

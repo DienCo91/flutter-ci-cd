@@ -24,11 +24,15 @@ class OpenMeteoApiClient {
 
   final Dio _dio;
 
-  final String _baseUrlGeocoding = "https://geocoding-api.open-meteo.com/v1/search";
+  final String _baseUrlGeocoding =
+      "https://geocoding-api.open-meteo.com/v1/search";
   final String _baseUrlForecast = "https://api.open-meteo.com/v1/forecast";
 
   Future<Location> searchByLocationName(String locationName) async {
-    final res = await _dio.get(_baseUrlGeocoding, queryParameters: {'name': locationName.trim(), 'count': 1});
+    final res = await _dio.get(
+      _baseUrlGeocoding,
+      queryParameters: {'name': locationName.trim(), 'count': 1},
+    );
     if (res.statusCode == 200) {
       final data = res.data;
       final results = data['results'] as List<dynamic>;
@@ -38,7 +42,10 @@ class OpenMeteoApiClient {
     }
   }
 
-  Future<Weather> getWeather({required double latitude, required double longitude}) async {
+  Future<Weather> getWeather({
+    required double latitude,
+    required double longitude,
+  }) async {
     final res = await _dio.get(
       _baseUrlForecast,
       queryParameters: {

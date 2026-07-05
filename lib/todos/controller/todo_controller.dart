@@ -17,4 +17,3 @@ class TodoController extends GetxController {
     print("========= Search with keyword: ${textSearch.value}");
   }
 }
-

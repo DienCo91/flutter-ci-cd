@@ -14,7 +14,11 @@ class PurchaseConsumable extends StatelessWidget {
             Text(
               'Choose Your Plan Consumable',
               textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             ListView.builder(
               shrinkWrap: true,
@@ -22,7 +26,9 @@ class PurchaseConsumable extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: state.plansConsumable.length,
               itemBuilder: (context, index) {
-                final isActive = state.plansConsumable[index].id == state.selectedProductDetail?.id;
+                final isActive =
+                    state.plansConsumable[index].id ==
+                    state.selectedProductDetail?.id;
 
                 return AnimatedScale(
                   duration: const Duration(milliseconds: 180),
@@ -33,13 +39,20 @@ class PurchaseConsumable extends StatelessWidget {
                     duration: const Duration(milliseconds: 250),
                     curve: Curves.easeOut,
                     decoration: BoxDecoration(
-                      color: isActive ? Colors.white.withValues(alpha: 0.55) : Colors.white.withValues(alpha: 0.4),
+                      color: isActive
+                          ? Colors.white.withValues(alpha: 0.55)
+                          : Colors.white.withValues(alpha: 0.4),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: isActive ? Colors.white : Colors.transparent, width: isActive ? 2 : 1),
+                      border: Border.all(
+                        color: isActive ? Colors.white : Colors.transparent,
+                        width: isActive ? 2 : 1,
+                      ),
 
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: isActive ? 0.25 : 0.08),
+                          color: Colors.black.withValues(
+                            alpha: isActive ? 0.25 : 0.08,
+                          ),
                           blurRadius: isActive ? 16 : 4,
                           offset: Offset(0, isActive ? 8 : 2),
                         ),
@@ -51,7 +64,9 @@ class PurchaseConsumable extends StatelessWidget {
                         borderRadius: BorderRadius.circular(16),
                         onTap: () {
                           context.read<PurchaseBloc>().add(
-                            ChoosePlanPurchaseEvent(productDetails: state.plansConsumable[index]),
+                            ChoosePlanPurchaseEvent(
+                              productDetails: state.plansConsumable[index],
+                            ),
                           );
                         },
                         child: Padding(
@@ -78,7 +93,10 @@ class PurchaseConsumable extends StatelessWidget {
                                 const SizedBox(height: 8),
                                 Text(
                                   state.plansConsumable[index].description,
-                                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ],
                             ),

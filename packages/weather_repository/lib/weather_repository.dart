@@ -1,3 +1,3 @@
-library weather_repository;
+library;
 
 export './src/weather_repository.dart';

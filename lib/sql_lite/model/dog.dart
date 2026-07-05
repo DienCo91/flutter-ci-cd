@@ -17,6 +17,10 @@ class Dog {
   static const jsonSchema = _$DogJsonSchema;
 
   Dog copyWith({int? id, String? name, int? age}) {
-    return Dog(id: id ?? this.id, name: name ?? this.name, age: age ?? this.age);
+    return Dog(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      age: age ?? this.age,
+    );
   }
 }

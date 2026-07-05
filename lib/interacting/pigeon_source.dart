@@ -22,7 +22,12 @@ class NetWorkStatus {
   final String carrierName;
   final String connectionType;
 
-  NetWorkStatus({required this.name, required this.speed, required this.carrierName, required this.connectionType});
+  NetWorkStatus({
+    required this.name,
+    required this.speed,
+    required this.carrierName,
+    required this.connectionType,
+  });
 }
 
 @HostApi()

@@ -15,12 +15,21 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     on<WeatherByLocationRequested>(_fetchWeatherByName);
   }
 
-  void _fetchWeatherByName(WeatherByLocationRequested event, Emitter<WeatherState> emit) async {
+  void _fetchWeatherByName(
+    WeatherByLocationRequested event,
+    Emitter<WeatherState> emit,
+  ) async {
     try {
       emit(state.copyWith(status: WeatherStatus.loading));
       final weather = await _repository.getWeatherByName(name: event.name);
-      emit(state.copyWith(status: WeatherStatus.success, weather: weather, name: event.name));
-    } catch (e, st) {
+      emit(
+        state.copyWith(
+          status: WeatherStatus.success,
+          weather: weather,
+          name: event.name,
+        ),
+      );
+    } catch (e) {
       emit(state.copyWith(status: WeatherStatus.failure));
     }
   }

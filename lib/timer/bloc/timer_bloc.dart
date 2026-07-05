@@ -26,7 +26,10 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
     return super.close();
   }
 
-  void _handleTimerInitialized(TimerInitialized event, Emitter<TimerState> emit) {
+  void _handleTimerInitialized(
+    TimerInitialized event,
+    Emitter<TimerState> emit,
+  ) {
     _initialSecond = event.second;
     emit(TimerState(secondState: event.second));
   }
@@ -34,7 +37,9 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   void _handleTimerStarted(TimerStarted event, Emitter<TimerState> emit) {
     _ticker = Ticker(take: state.secondState);
     emit(TimerState(secondState: state.secondState));
-    _tickerSubscription = _ticker.tick(ticks: state.secondState).listen((second) => add(TimeTicked(second: second)));
+    _tickerSubscription = _ticker
+        .tick(ticks: state.secondState)
+        .listen((second) => add(TimeTicked(second: second)));
   }
 
   void _handleTimerPaused(TimerPaused event, Emitter<TimerState> emit) {

@@ -8,12 +8,21 @@ part 'todos_state.dart';
 class TodosBloc extends Bloc<TodosEvent, TodosState> {
   final TodosRepository _repository;
 
-  TodosBloc({required TodosRepository repository}) : _repository = repository, super(TodosState()) {
+  TodosBloc({required TodosRepository repository})
+    : _repository = repository,
+      super(TodosState()) {
     on<TodosFetched>((event, emit) async {
       final page = (event.page ?? 1).toInt();
       final limit = (event.limit ?? 12).toInt();
 
-      emit(state.copyWith(status: TodosStatus.loading, error: null, page: page, limit: limit));
+      emit(
+        state.copyWith(
+          status: TodosStatus.loading,
+          error: null,
+          page: page,
+          limit: limit,
+        ),
+      );
       try {
         final res = await _repository.getTodos(page: page, limit: limit);
         final isLoadMore = res.length <= (event.limit ?? 12);
@@ -27,13 +36,24 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
           ),
         );
       } catch (e) {
-        emit(state.copyWith(status: TodosStatus.failure, error: e.toString(), isLoadMore: false));
+        emit(
+          state.copyWith(
+            status: TodosStatus.failure,
+            error: e.toString(),
+            isLoadMore: false,
+          ),
+        );
       }
     });
 
     on<TodoDeleteById>((event, emit) async {
       final id = event.id;
-      emit(state.copyWith(actionStatus: TodoActionStatus.loading, targetTodoId: id));
+      emit(
+        state.copyWith(
+          actionStatus: TodoActionStatus.loading,
+          targetTodoId: id,
+        ),
+      );
       try {
         await _repository.deleteTodoById(id);
         emit(
@@ -43,9 +63,20 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
           ),
         );
       } catch (e) {
-        emit(state.copyWith(status: TodosStatus.failure, error: e.toString(), isLoadMore: false));
+        emit(
+          state.copyWith(
+            status: TodosStatus.failure,
+            error: e.toString(),
+            isLoadMore: false,
+          ),
+        );
       } finally {
-        emit(state.copyWith(actionStatus: TodoActionStatus.initial, targetTodoId: null));
+        emit(
+          state.copyWith(
+            actionStatus: TodoActionStatus.initial,
+            targetTodoId: null,
+          ),
+        );
       }
     });
 
@@ -55,11 +86,21 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
       try {
         final res = await _repository.createTodo(todo);
 
-        emit(state.copyWith(todos: [res, ...state.todos], actionStatus: TodoActionStatus.success));
+        emit(
+          state.copyWith(
+            todos: [res, ...state.todos],
+            actionStatus: TodoActionStatus.success,
+          ),
+        );
       } catch (e) {
         emit(state.copyWith(status: TodosStatus.failure, error: e.toString()));
       } finally {
-        emit(state.copyWith(actionStatus: TodoActionStatus.initial, targetTodoId: null));
+        emit(
+          state.copyWith(
+            actionStatus: TodoActionStatus.initial,
+            targetTodoId: null,
+          ),
+        );
       }
     });
 
@@ -78,7 +119,12 @@ class TodosBloc extends Bloc<TodosEvent, TodosState> {
       } catch (e) {
         emit(state.copyWith(status: TodosStatus.failure, error: e.toString()));
       } finally {
-        emit(state.copyWith(actionStatus: TodoActionStatus.initial, targetTodoId: null));
+        emit(
+          state.copyWith(
+            actionStatus: TodoActionStatus.initial,
+            targetTodoId: null,
+          ),
+        );
       }
     });
   }

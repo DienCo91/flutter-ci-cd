@@ -14,7 +14,8 @@ class TodoItem extends StatelessWidget {
     void handleEditTodo(BuildContext context) {
       showDialog(
         context: context,
-        builder: (contextDialog) => TodoDialog(mainContext: context, todo: todo),
+        builder: (contextDialog) =>
+            TodoDialog(mainContext: context, todo: todo),
       );
     }
 
@@ -37,31 +38,52 @@ class TodoItem extends StatelessWidget {
               },
               child: BlocBuilder<TodosBloc, TodosState>(
                 bloc: context.read<TodosBloc>(),
-                buildWhen: (previous, current) => previous.actionStatus != current.actionStatus,
+                buildWhen: (previous, current) =>
+                    previous.actionStatus != current.actionStatus,
                 builder: (dialogContextBuilder, state) {
-                  final loading = state.actionStatus == TodoActionStatus.loading && state.targetTodoId == todo.id;
+                  final loading =
+                      state.actionStatus == TodoActionStatus.loading &&
+                      state.targetTodoId == todo.id;
 
                   return AlertDialog(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
                     title: const Text('Xác nhận xóa?'),
-                    content: Text('Bạn có chắc chắn muốn xóa công việc có ID: ${todo.id} không?'),
+                    content: Text(
+                      'Bạn có chắc chắn muốn xóa công việc có ID: ${todo.id} không?',
+                    ),
                     actions: [
                       TextButton(
-                        onPressed: loading ? null : () => Navigator.of(dialogContext).pop(false),
-                        child: const Text('Hủy', style: TextStyle(color: Colors.black54)),
+                        onPressed: loading
+                            ? null
+                            : () => Navigator.of(dialogContext).pop(false),
+                        child: const Text(
+                          'Hủy',
+                          style: TextStyle(color: Colors.black54),
+                        ),
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.red.shade600,
                           foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
-                        onPressed: loading ? null : () => context.read<TodosBloc>().add(TodoDeleteById(id: todo.id)),
+                        onPressed: loading
+                            ? null
+                            : () => context.read<TodosBloc>().add(
+                                TodoDeleteById(id: todo.id),
+                              ),
                         child: loading
                             ? const SizedBox(
                                 width: 20,
                                 height: 20,
-                                child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2),
+                                child: CircularProgressIndicator(
+                                  color: Colors.white,
+                                  strokeWidth: 2,
+                                ),
                               )
                             : const Text('Xóa'),
                       ),
@@ -83,17 +105,19 @@ class TodoItem extends StatelessWidget {
             title: Text(todo.title ?? ""),
             subtitle: Row(
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('ID: ${todo.id}'),
-                    Text('Completed: ${todo.isComplete}'),
-                    Text(
-                      'Created At: ${DateFormat('HH:mm dd-MM-yyyy').format(DateTime.parse(todo.createdAt!).toLocal())}',
-                    ),
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('ID: ${todo.id}'),
+                      Text('Completed: ${todo.isComplete}'),
+                      Text(
+                        'Created At: ${DateFormat('HH:mm dd-MM-yyyy').format(DateTime.parse(todo.createdAt!).toLocal())}',
+                      ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
+
                 BlocBuilder<TodosBloc, TodosState>(
                   bloc: context.read<TodosBloc>(),
                   builder: (context, state) {
@@ -107,7 +131,10 @@ class TodoItem extends StatelessWidget {
               ],
             ),
           ),
-          Padding(padding: const EdgeInsets.symmetric(horizontal: 16), child: Divider(height: 1)),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Divider(height: 1),
+          ),
         ],
       ),
     );
