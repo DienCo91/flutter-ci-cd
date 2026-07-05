@@ -1,6 +1,6 @@
-import 'package:batterylevel/pages/home.dart';
 import 'package:batterylevel/provider/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key, this.userId});
@@ -13,16 +13,11 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   void handleGotoSetting() {
-    Navigator.pushNamed(context, '/setting');
+    context.push('/setting');
   }
 
   void handleBackToHome() {
-    // Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (context) => const HomePage()),
-      (route) => false,
-    );
+    context.go('/');
   }
 
   void handleChangeColor(Color? color, BuildContext context) {
