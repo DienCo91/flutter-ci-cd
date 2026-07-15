@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'agg_trade.g.dart';
 
 @JsonSerializable()
-class AggTrade {
+class AggTrade extends Equatable {
   @JsonKey(name: 'e')
   final String? eventType;
 
@@ -37,7 +38,7 @@ class AggTrade {
   @JsonKey(name: 'M')
   final bool? ignoreData;
 
-  AggTrade({
+  const AggTrade({
     this.eventType,
     this.eventTime,
     this.symbol,
@@ -82,4 +83,19 @@ class AggTrade {
       ignoreData: ignoreData ?? this.ignoreData,
     );
   }
+
+  @override
+  List<Object?> get props => [
+    eventType,
+    eventTime,
+    symbol,
+    aggTradeId,
+    price,
+    quantity,
+    firstTradeId,
+    lastTradeId,
+    tradeTime,
+    isBuyerMaker,
+    ignoreData,
+  ];
 }

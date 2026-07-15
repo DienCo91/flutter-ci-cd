@@ -40,7 +40,7 @@ app.*.symbols
 app.*.map.json
 
 # opencode config (contains API keys)
-.opencode/config.json
+.opencode
 
 # Android Studio will place build artifacts here
 /android/app/debug

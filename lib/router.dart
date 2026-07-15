@@ -4,6 +4,7 @@ import 'package:batterylevel/pages/home.dart';
 import 'package:batterylevel/pages/profile.dart';
 import 'package:batterylevel/pages/setting.dart';
 import 'package:batterylevel/pages/ui_mcp_screen.dart';
+import 'package:batterylevel/price_list/price_list.dart';
 import 'package:batterylevel/purchase/views/purchase_page.dart';
 import 'package:batterylevel/scroll_advance/sliver_app_bar.dart';
 import 'package:batterylevel/sql_lite/sql_lite_page.dart';
@@ -60,17 +61,20 @@ final GoRouter appRouter = GoRouter(
       path: '/binance_trading',
       redirect: (context, state) {
         final symbol = state.extra as String?;
-
         if (symbol == null || symbol.isEmpty) {
           return '/';
         }
-
         return null;
       },
       builder: (context, state) {
         final symbol = state.extra as String;
-
         return BinanceTrading(symbol: symbol);
+      },
+    ),
+    GoRoute(
+      path: '/price_list',
+      builder: (context, state) {
+        return PriceListPage();
       },
     ),
   ],

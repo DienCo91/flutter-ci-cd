@@ -128,6 +128,10 @@ class _HomePageState extends State<HomePage> {
     context.push('/binance_exchange_info');
   }
 
+  void gotoPriceList() {
+    context.push('/price_list');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,6 +169,7 @@ class _HomePageState extends State<HomePage> {
                       ElevatedButton(onPressed: gotoGenUiPage, child: Text('GenUI Page')),
                       ElevatedButton(onPressed: goToUiMcpScreen, child: Text('UI MCP Screen')),
                       ElevatedButton(onPressed: gotoWebSocket, child: Text('Binance Exchange Info')),
+                      ElevatedButton(onPressed: gotoPriceList, child: Text('Go to Price List')),
                     ],
                   ),
                 ),
