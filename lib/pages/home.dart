@@ -120,13 +120,22 @@ class _HomePageState extends State<HomePage> {
     context.push('/genui');
   }
 
+  void goToUiMcpScreen() {
+    context.push('/uimcp');
+  }
+
+  void gotoWebSocket() {
+    context.push('/binance_exchange_info');
+  }
+
+  void gotoPriceList() {
+    context.push('/price_list');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Home"),
-      ),
+      appBar: AppBar(backgroundColor: Theme.of(context).colorScheme.inversePrimary, title: Text("Home")),
       body: SafeArea(
         bottom: true,
         child: Stack(
@@ -145,58 +154,22 @@ class _HomePageState extends State<HomePage> {
                       else if (appFlavor == 'staging')
                         Center(child: Text("Staging")),
                       Text(_text),
-                      ElevatedButton(
-                        onPressed: goToDos,
-                        child: Text('Go to Todos'),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToTimer,
-                        child: Text('Go to Timer'),
-                      ),
-                      ElevatedButton(
-                        onPressed: onClick,
-                        child: Text("Get Text Pigeon"),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToSqlLite,
-                        child: Text('Go to sqlite'),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToProfile,
-                        child: Text('Go to Profile'),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToCounter,
-                        child: Text('Go to Counter'),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToPurchase,
-                        child: Text('Go to Purchase Consumable'),
-                      ),
-                      ElevatedButton(
-                        onPressed: getStatusRam,
-                        child: Text("Get Status Ram"),
-                      ),
-                      ElevatedButton(
-                        onPressed: getNetworkStatus,
-                        child: Text("Get Network Info"),
-                      ),
-                      ElevatedButton(
-                        onPressed: _getBatteryLevel,
-                        child: Text("Get Battery Level"),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToSliverAppBar,
-                        child: Text('Go to sliver app bar'),
-                      ),
-                      ElevatedButton(
-                        onPressed: goToSearchWeatherByName,
-                        child: Text('Go to Search Weather'),
-                      ),
-                      ElevatedButton(
-                        onPressed: gotoGenUiPage,
-                        child: Text('GenUI Page'),
-                      ),
+                      ElevatedButton(onPressed: goToDos, child: Text('Go to Todos')),
+                      ElevatedButton(onPressed: goToTimer, child: Text('Go to Timer')),
+                      ElevatedButton(onPressed: onClick, child: Text("Get Text Pigeon")),
+                      ElevatedButton(onPressed: goToSqlLite, child: Text('Go to sqlite')),
+                      ElevatedButton(onPressed: goToProfile, child: Text('Go to Profile')),
+                      ElevatedButton(onPressed: goToCounter, child: Text('Go to Counter')),
+                      ElevatedButton(onPressed: goToPurchase, child: Text('Go to Purchase Consumable')),
+                      ElevatedButton(onPressed: getStatusRam, child: Text("Get Status Ram")),
+                      ElevatedButton(onPressed: getNetworkStatus, child: Text("Get Network Info")),
+                      ElevatedButton(onPressed: _getBatteryLevel, child: Text("Get Battery Level")),
+                      ElevatedButton(onPressed: goToSliverAppBar, child: Text('Go to sliver app bar')),
+                      ElevatedButton(onPressed: goToSearchWeatherByName, child: Text('Go to Search Weather')),
+                      ElevatedButton(onPressed: gotoGenUiPage, child: Text('GenUI Page')),
+                      ElevatedButton(onPressed: goToUiMcpScreen, child: Text('UI MCP Screen')),
+                      ElevatedButton(onPressed: gotoWebSocket, child: Text('Binance Exchange Info')),
+                      ElevatedButton(onPressed: gotoPriceList, child: Text('Go to Price List')),
                     ],
                   ),
                 ),
