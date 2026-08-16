@@ -14,7 +14,12 @@ class PaginationState<T> extends Equatable {
     this.isLoadingMore = false,
   });
 
-  PaginationState<T> copyWith({List<T>? data, int? page, bool? hasNextPage, bool? isLoadingMore}) {
+  PaginationState<T> copyWith({
+    List<T>? data,
+    int? page,
+    bool? hasNextPage,
+    bool? isLoadingMore,
+  }) {
     return PaginationState<T>(
       data: data ?? this.data,
       page: page ?? this.page,

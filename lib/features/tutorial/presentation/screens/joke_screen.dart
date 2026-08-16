@@ -18,7 +18,8 @@ class JokeScreen extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 switch (data) {
-                  AsyncValue(isLoading: true) => const CircularProgressIndicator(),
+                  AsyncValue(isLoading: true) =>
+                    const CircularProgressIndicator(),
                   AsyncValue(:final value?) => SelectableText(
                     '${value.setup}\n\n${value.punchline}',
                     textAlign: TextAlign.center,

@@ -77,8 +77,16 @@ class _MyAppState extends State<MyApp> {
       routerConfig: appRouter,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.purple, brightness: Brightness.dark),
-        textTheme: TextTheme(displayLarge: const TextStyle(fontSize: 72, fontWeight: FontWeight.bold)),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.purple,
+          brightness: Brightness.dark,
+        ),
+        textTheme: TextTheme(
+          displayLarge: const TextStyle(
+            fontSize: 72,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
       ),
       debugShowCheckedModeBanner: false,
     );

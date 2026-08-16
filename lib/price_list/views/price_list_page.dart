@@ -31,7 +31,8 @@ class PriceListPage extends StatelessWidget {
                   ],
                 ),
                 BlocBuilder<PriceListBloc, PriceListState>(
-                  buildWhen: (previous, current) => previous.symbols != current.symbols,
+                  buildWhen: (previous, current) =>
+                      previous.symbols != current.symbols,
                   builder: (context, state) {
                     return ListView.builder(
                       shrinkWrap: true,
@@ -43,27 +44,36 @@ class PriceListPage extends StatelessWidget {
                             RowItem(
                               index: index,
                               symbol: symbol,
-                              onSelect: (bloc) => bloc.state.marketData?[symbol]?.symbol ?? '',
+                              onSelect: (bloc) =>
+                                  bloc.state.marketData?[symbol]?.symbol ?? '',
                             ),
                             RowItem(
                               index: index,
                               symbol: symbol,
-                              onSelect: (bloc) => bloc.state.marketData?[symbol]?.joint ?? 0,
+                              onSelect: (bloc) =>
+                                  bloc.state.marketData?[symbol]?.joint ?? 0,
                             ),
                             RowItem(
                               index: index,
                               symbol: symbol,
-                              onSelect: (bloc) => bloc.state.marketData?[symbol]?.change ?? 0,
+                              onSelect: (bloc) =>
+                                  bloc.state.marketData?[symbol]?.change ?? 0,
                             ),
                             RowItem(
                               index: index,
                               symbol: symbol,
-                              onSelect: (bloc) => bloc.state.marketData?[symbol]?.changePercent ?? 0,
+                              onSelect: (bloc) =>
+                                  bloc
+                                      .state
+                                      .marketData?[symbol]
+                                      ?.changePercent ??
+                                  0,
                             ),
                             RowItem(
                               index: index,
                               symbol: symbol,
-                              onSelect: (bloc) => bloc.state.marketData?[symbol]?.volume ?? 0,
+                              onSelect: (bloc) =>
+                                  bloc.state.marketData?[symbol]?.volume ?? 0,
                             ),
                           ],
                         );

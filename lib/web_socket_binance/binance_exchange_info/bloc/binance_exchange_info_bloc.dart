@@ -5,7 +5,8 @@ import 'package:meta/meta.dart';
 part 'binance_exchange_info_event.dart';
 part 'binance_exchange_info_state.dart';
 
-class BinanceExchangeInfoBloc extends Bloc<BinanceExchangeInfoEvent, BinanceExchangeInfoState> {
+class BinanceExchangeInfoBloc
+    extends Bloc<BinanceExchangeInfoEvent, BinanceExchangeInfoState> {
   final BinanceExchangeInfoRepository _repository;
 
   BinanceExchangeInfoBloc({required BinanceExchangeInfoRepository repository})
@@ -14,11 +15,19 @@ class BinanceExchangeInfoBloc extends Bloc<BinanceExchangeInfoEvent, BinanceExch
     on<BinanceExchangeInfoFetched>(_onBinanceExchangeInfoFetched);
   }
 
-  void _onBinanceExchangeInfoFetched(BinanceExchangeInfoFetched event, Emitter<BinanceExchangeInfoState> emit) async {
+  void _onBinanceExchangeInfoFetched(
+    BinanceExchangeInfoFetched event,
+    Emitter<BinanceExchangeInfoState> emit,
+  ) async {
     try {
       emit(state.copyWith(status: BinanceExchangeInfoStatus.loading));
       final res = await _repository.getExchangeInfo();
-      emit(state.copyWith(listExchangeInfo: res["symbols"], status: BinanceExchangeInfoStatus.success));
+      emit(
+        state.copyWith(
+          listExchangeInfo: res["symbols"],
+          status: BinanceExchangeInfoStatus.success,
+        ),
+      );
     } catch (e) {
       emit(state.copyWith(status: BinanceExchangeInfoStatus.failure));
     }

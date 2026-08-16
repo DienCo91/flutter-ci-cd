@@ -17,14 +17,19 @@ class CounterScreen extends StatelessWidget {
               children: [
                 Text(count.toString()),
                 ElevatedButton(
-                  onPressed: () => ref.read(counterProvider.notifier).increment(),
+                  onPressed: () =>
+                      ref.read(counterProvider.notifier).increment(),
                   child: const Text('Increment'),
                 ),
                 ElevatedButton(
-                  onPressed: () => ref.read(counterProvider.notifier).decrement(),
+                  onPressed: () =>
+                      ref.read(counterProvider.notifier).decrement(),
                   child: const Text('Decrement'),
                 ),
-                ElevatedButton(onPressed: () => ref.read(counterProvider.notifier).reset(), child: const Text('Reset')),
+                ElevatedButton(
+                  onPressed: () => ref.read(counterProvider.notifier).reset(),
+                  child: const Text('Reset'),
+                ),
               ],
             ),
           );

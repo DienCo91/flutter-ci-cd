@@ -18,7 +18,10 @@ class DioClient {
         connectTimeout: _defaultTimeout,
         receiveTimeout: _defaultTimeout,
         sendTimeout: _defaultTimeout,
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
       ),
     );
 
@@ -84,7 +87,9 @@ class _AppInterceptor extends Interceptor {
         );
       case DioExceptionType.badResponse:
         final statusCode = err.response?.statusCode;
-        final serverMessage = err.response?.data is Map ? (err.response?.data as Map)['message'] : null;
+        final serverMessage = err.response?.data is Map
+            ? (err.response?.data as Map)['message']
+            : null;
         String message;
         switch (statusCode) {
           case 400:

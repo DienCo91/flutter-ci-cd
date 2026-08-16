@@ -7,7 +7,12 @@ class RowItem extends StatelessWidget {
   final String symbol;
   final num index;
   final Function(PriceListBloc bloc) onSelect;
-  const RowItem({super.key, required this.symbol, required this.onSelect, required this.index});
+  const RowItem({
+    super.key,
+    required this.symbol,
+    required this.onSelect,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context) {

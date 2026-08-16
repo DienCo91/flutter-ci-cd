@@ -9,7 +9,9 @@ class JokeRepository {
   final baseUrl = 'https://official-joke-api.appspot.com';
 
   Future<Joke> fetchRandomJoke() async {
-    final response = await _dio.get<Map<String, Object?>>('$baseUrl/random_joke');
+    final response = await _dio.get<Map<String, Object?>>(
+      '$baseUrl/random_joke',
+    );
 
     return Joke.fromJson(response.data!);
   }

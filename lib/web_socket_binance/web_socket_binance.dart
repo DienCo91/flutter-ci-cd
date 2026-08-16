@@ -17,7 +17,9 @@ class WebSocketBinance extends GetView<WebSocketBinanceController> {
         create: (context) => BinanceExchangeInfoRepository(),
         child: BlocProvider(
           create: (context) {
-            final bloc = BinanceExchangeInfoBloc(repository: context.read<BinanceExchangeInfoRepository>());
+            final bloc = BinanceExchangeInfoBloc(
+              repository: context.read<BinanceExchangeInfoRepository>(),
+            );
             bloc.add(BinanceExchangeInfoFetched());
             return bloc;
           },

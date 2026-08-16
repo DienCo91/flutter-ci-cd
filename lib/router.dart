@@ -53,18 +53,32 @@ final GoRouter appRouter = GoRouter(
     GoRoute(
       path: '/weather',
       builder: (context, state) => RepositoryProvider(
-        create: (context) => WeatherRepository(openMeteoApiClient: OpenMeteoApiClient(dio: DioClient().dio)),
+        create: (context) => WeatherRepository(
+          openMeteoApiClient: OpenMeteoApiClient(dio: DioClient().dio),
+        ),
         child: const WeatherPage(),
       ),
     ),
-    GoRoute(path: '/sliver', builder: (context, state) => const SliverAppBarExample()),
+    GoRoute(
+      path: '/sliver',
+      builder: (context, state) => const SliverAppBarExample(),
+    ),
     GoRoute(path: '/sqlite', builder: (context, state) => const SqlLitePage()),
-    GoRoute(path: '/purchase', builder: (context, state) => const PurchasePage()),
+    GoRoute(
+      path: '/purchase',
+      builder: (context, state) => const PurchasePage(),
+    ),
     GoRoute(path: '/genui', builder: (context, state) => const GenUiPage()),
     GoRoute(path: '/uimcp', builder: (context, state) => const UiMcpScreen()),
     GoRoute(path: '/joke', builder: (context, state) => const JokeScreen()),
-    GoRoute(path: '/counter_riverpod_screen', builder: (context, state) => const CounterScreen()),
-    GoRoute(path: '/todo_riverpod_screen', builder: (context, state) => const TodoScreen()),
+    GoRoute(
+      path: '/counter_riverpod_screen',
+      builder: (context, state) => const CounterScreen(),
+    ),
+    GoRoute(
+      path: '/todo_riverpod_screen',
+      builder: (context, state) => const TodoScreen(),
+    ),
 
     GoRoute(
       path: '/binance_trading',
@@ -90,9 +104,18 @@ final GoRouter appRouter = GoRouter(
             currentIndex: navigationShell.currentIndex,
             items: const [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-              BottomNavigationBarItem(icon: Icon(Icons.price_change), label: 'Price list'),
-              BottomNavigationBarItem(icon: Icon(Icons.info), label: 'Exchange Info'),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: 'Riverpod'),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.price_change),
+                label: 'Price list',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.info),
+                label: 'Exchange Info',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.settings),
+                label: 'Riverpod',
+              ),
             ],
             onTap: (int index) {
               return navigationShell.goBranch(index);
@@ -102,7 +125,13 @@ final GoRouter appRouter = GoRouter(
       },
       branches: [
         StatefulShellBranch(
-          routes: [GoRoute(path: '/', name: 'home', builder: (_, _) => const HomePage())],
+          routes: [
+            GoRoute(
+              path: '/',
+              name: 'home',
+              builder: (_, _) => const HomePage(),
+            ),
+          ],
         ),
         StatefulShellBranch(
           routes: [
@@ -147,7 +176,11 @@ final GoRouter appRouter = GoRouter(
         ),
         StatefulShellBranch(
           routes: [
-            GoRoute(path: '/tutorial_riverpod', name: 'tutorial_riverpod', builder: (_, _) => const TutorialScreen()),
+            GoRoute(
+              path: '/tutorial_riverpod',
+              name: 'tutorial_riverpod',
+              builder: (_, _) => const TutorialScreen(),
+            ),
           ],
         ),
       ],

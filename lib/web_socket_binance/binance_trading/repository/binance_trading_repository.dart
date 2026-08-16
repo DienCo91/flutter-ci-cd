@@ -13,16 +13,22 @@ class BinanceTradingRepository {
   WebSocketChannel? _channel;
   final int TOTAL_DEPTH = 10;
 
-  Future<Map<String, dynamic>> getTradingBySymbol({required String symbol}) async {
+  Future<Map<String, dynamic>> getTradingBySymbol({
+    required String symbol,
+  }) async {
     try {
-      final res = await _dio.get('$_baseUrl/depth?symbol=$symbol&limit=$TOTAL_DEPTH');
+      final res = await _dio.get(
+        '$_baseUrl/depth?symbol=$symbol&limit=$TOTAL_DEPTH',
+      );
       return res.data;
     } catch (e) {
       throw Exception('Load trading pairs error: $e');
     }
   }
 
-  Future<Map<String, dynamic>> getAggTradeBySymbol({required String symbol}) async {
+  Future<Map<String, dynamic>> getAggTradeBySymbol({
+    required String symbol,
+  }) async {
     try {
       final res = await _dio.get('$_baseUrl/aggTrades?symbol=$symbol&limit=1');
       return res.data[0];
@@ -33,7 +39,8 @@ class BinanceTradingRepository {
 
   Stream<Map<String, dynamic>> getOrderBookStream({required String symbol}) {
     final symbolLower = symbol.toLowerCase();
-    final url = '$_wsUrl/stream?streams=$symbolLower@depth$TOTAL_DEPTH@100ms/$symbolLower@aggTrade';
+    final url =
+        '$_wsUrl/stream?streams=$symbolLower@depth$TOTAL_DEPTH@100ms/$symbolLower@aggTrade';
     _channel = WebSocketChannel.connect(Uri.parse(url));
 
     return _channel!.stream.map((rawMessage) => jsonDecode(rawMessage));

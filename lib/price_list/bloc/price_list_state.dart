@@ -6,8 +6,14 @@ final class PriceListState extends Equatable {
 
   const PriceListState({this.symbols = const [], this.marketData});
 
-  PriceListState copyWith({List<String>? symbols, Map<String, Stock>? marketData}) {
-    return PriceListState(symbols: symbols ?? this.symbols, marketData: marketData ?? this.marketData);
+  PriceListState copyWith({
+    List<String>? symbols,
+    Map<String, Stock>? marketData,
+  }) {
+    return PriceListState(
+      symbols: symbols ?? this.symbols,
+      marketData: marketData ?? this.marketData,
+    );
   }
 
   @override

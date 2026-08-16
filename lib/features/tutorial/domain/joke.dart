@@ -10,7 +10,12 @@ class Joke extends Equatable {
   final String punchline;
   final int id;
 
-  const Joke({required this.type, required this.setup, required this.punchline, required this.id});
+  const Joke({
+    required this.type,
+    required this.setup,
+    required this.punchline,
+    required this.id,
+  });
 
   factory Joke.fromJson(Map<String, dynamic> json) => _$JokeFromJson(json);
 

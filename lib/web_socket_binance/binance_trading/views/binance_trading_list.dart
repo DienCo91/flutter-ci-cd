@@ -17,16 +17,22 @@ class BinanceTradingList extends StatelessWidget {
         Container(
           width: double.infinity,
           color: Colors.red[400],
-          child: Text('Asks (Bán - USD)', style: Theme.of(context).textTheme.titleLarge),
+          child: Text(
+            'Asks (Bán - USD)',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
         Expanded(
           child: BlocBuilder<BinanceTradingBloc, BinanceTradingState>(
-            buildWhen: (previous, current) => previous.listAsks != current.listAsks,
+            buildWhen: (previous, current) =>
+                previous.listAsks != current.listAsks,
             builder: (context, state) {
               if (state.status == BinanceTradingStatus.loading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state.status == BinanceTradingStatus.failure) {
-                return const Center(child: Text('Failed to fetch trading data'));
+                return const Center(
+                  child: Text('Failed to fetch trading data'),
+                );
               } else if (state.listAsks.isEmpty) {
                 return const Center(child: Text('No trading data available'));
               }
@@ -40,8 +46,12 @@ class BinanceTradingList extends StatelessWidget {
                   return RepaintBoundary(
                     child: Row(
                       children: [
-                        Expanded(child: FlashingCell(textValue: '${listAsks[0]}')),
-                        Expanded(child: FlashingCell(textValue: ' ${listAsks[1]}')),
+                        Expanded(
+                          child: FlashingCell(textValue: '${listAsks[0]}'),
+                        ),
+                        Expanded(
+                          child: FlashingCell(textValue: ' ${listAsks[1]}'),
+                        ),
                       ],
                     ),
                   );
@@ -53,7 +63,8 @@ class BinanceTradingList extends StatelessWidget {
 
         Divider(height: 1.0, color: Colors.grey[400]),
         BlocBuilder<BinanceTradingBloc, BinanceTradingState>(
-          buildWhen: (previous, current) => previous.aggTrade != current.aggTrade,
+          buildWhen: (previous, current) =>
+              previous.aggTrade != current.aggTrade,
           builder: (context, state) {
             if (state.status == BinanceTradingStatus.loading) {
               return const Center(child: CircularProgressIndicator());
@@ -69,12 +80,15 @@ class BinanceTradingList extends StatelessWidget {
 
         Expanded(
           child: BlocBuilder<BinanceTradingBloc, BinanceTradingState>(
-            buildWhen: (previous, current) => previous.listBids != current.listBids,
+            buildWhen: (previous, current) =>
+                previous.listBids != current.listBids,
             builder: (context, state) {
               if (state.status == BinanceTradingStatus.loading) {
                 return const Center(child: CircularProgressIndicator());
               } else if (state.status == BinanceTradingStatus.failure) {
-                return const Center(child: Text('Failed to fetch trading data'));
+                return const Center(
+                  child: Text('Failed to fetch trading data'),
+                );
               } else if (state.listBids.isEmpty) {
                 return const Center(child: Text('No trading data available'));
               }
@@ -87,8 +101,12 @@ class BinanceTradingList extends StatelessWidget {
                   return RepaintBoundary(
                     child: Row(
                       children: [
-                        Expanded(child: FlashingCell(textValue: '${listBids[0]}')),
-                        Expanded(child: FlashingCell(textValue: ' ${listBids[1]}')),
+                        Expanded(
+                          child: FlashingCell(textValue: '${listBids[0]}'),
+                        ),
+                        Expanded(
+                          child: FlashingCell(textValue: ' ${listBids[1]}'),
+                        ),
                       ],
                     ),
                   );
@@ -99,17 +117,24 @@ class BinanceTradingList extends StatelessWidget {
         ),
         Container(
           color: Colors.green[400],
-          child: Text('Bids (Mua - USD)', style: Theme.of(context).textTheme.titleLarge),
+          child: Text(
+            'Bids (Mua - USD)',
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
 
         BlocBuilder<BinanceTradingBloc, BinanceTradingState>(
           buildWhen: (previous, current) =>
-              previous.listBids != current.listBids || previous.listAsks != current.listAsks,
+              previous.listBids != current.listBids ||
+              previous.listAsks != current.listAsks,
           builder: (context, state) {
             if (state.listBids.isEmpty || state.listAsks.isEmpty) {
               return const SizedBox();
             }
-            return BuySellRatioBar(listBids: state.listBids, listAsks: state.listAsks);
+            return BuySellRatioBar(
+              listBids: state.listBids,
+              listAsks: state.listAsks,
+            );
           },
         ),
       ],

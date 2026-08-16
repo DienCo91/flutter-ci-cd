@@ -52,7 +52,8 @@ class AggTrade extends Equatable {
     this.ignoreData,
   });
 
-  factory AggTrade.fromJson(Map<String, dynamic> json) => _$AggTradeFromJson(json);
+  factory AggTrade.fromJson(Map<String, dynamic> json) =>
+      _$AggTradeFromJson(json);
 
   Map<String, dynamic> toJson() => _$AggTradeToJson(this);
 

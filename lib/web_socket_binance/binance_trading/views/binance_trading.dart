@@ -17,7 +17,9 @@ class BinanceTrading extends StatelessWidget {
           create: (context) => BinanceTradingRepository(),
           child: BlocProvider(
             create: (context) {
-              final bloc = BinanceTradingBloc(repository: context.read<BinanceTradingRepository>());
+              final bloc = BinanceTradingBloc(
+                repository: context.read<BinanceTradingRepository>(),
+              );
               bloc.add(GetBinanceTradingEvent(symbol));
               bloc.add(GetAggTradeBySymbolEvent(symbol));
               bloc.add(StartListeningOrderBookEvent(symbol));

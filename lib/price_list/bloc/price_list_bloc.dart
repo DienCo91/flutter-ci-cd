@@ -16,17 +16,74 @@ class PriceListBloc extends Bloc<PriceListEvent, PriceListState> {
     on<SocketUpdateEvent>(_onSocketUpdate);
   }
 
-  void _onFetchLocalData(FetchLocalDataEvent event, Emitter<PriceListState> emit) {
+  void _onFetchLocalData(
+    FetchLocalDataEvent event,
+    Emitter<PriceListState> emit,
+  ) {
     final mockList = [
-      const Stock(symbol: "ACB", joint: 22.70, change: 0.20, changePercent: 0.89, volume: 78110),
-      const Stock(symbol: "BCM", joint: 62.80, change: -0.90, changePercent: -1.41, volume: 7860),
-      const Stock(symbol: "BVH", joint: 40.00, change: -0.15, changePercent: -0.37, volume: 4100),
-      const Stock(symbol: "CTG", joint: 26.65, change: -0.10, changePercent: -0.37, volume: 39000),
-      const Stock(symbol: "FPT", joint: 96.00, change: -0.20, changePercent: -0.21, volume: 48400),
-      const Stock(symbol: "BID", joint: 41.55, change: -0.05, changePercent: -0.12, volume: 5600),
-      const Stock(symbol: "GVR", joint: 19.90, change: 0.05, changePercent: 0.25, volume: 2100),
-      const Stock(symbol: "HDB", joint: 18.95, change: 0.05, changePercent: 0.26, volume: 16800),
-      const Stock(symbol: "HPG", joint: 27.10, change: 0.05, changePercent: 0.18, volume: 4000),
+      const Stock(
+        symbol: "ACB",
+        joint: 22.70,
+        change: 0.20,
+        changePercent: 0.89,
+        volume: 78110,
+      ),
+      const Stock(
+        symbol: "BCM",
+        joint: 62.80,
+        change: -0.90,
+        changePercent: -1.41,
+        volume: 7860,
+      ),
+      const Stock(
+        symbol: "BVH",
+        joint: 40.00,
+        change: -0.15,
+        changePercent: -0.37,
+        volume: 4100,
+      ),
+      const Stock(
+        symbol: "CTG",
+        joint: 26.65,
+        change: -0.10,
+        changePercent: -0.37,
+        volume: 39000,
+      ),
+      const Stock(
+        symbol: "FPT",
+        joint: 96.00,
+        change: -0.20,
+        changePercent: -0.21,
+        volume: 48400,
+      ),
+      const Stock(
+        symbol: "BID",
+        joint: 41.55,
+        change: -0.05,
+        changePercent: -0.12,
+        volume: 5600,
+      ),
+      const Stock(
+        symbol: "GVR",
+        joint: 19.90,
+        change: 0.05,
+        changePercent: 0.25,
+        volume: 2100,
+      ),
+      const Stock(
+        symbol: "HDB",
+        joint: 18.95,
+        change: 0.05,
+        changePercent: 0.26,
+        volume: 16800,
+      ),
+      const Stock(
+        symbol: "HPG",
+        joint: 27.10,
+        change: 0.05,
+        changePercent: 0.18,
+        volume: 4000,
+      ),
     ];
 
     final symbols = <String>[];
@@ -55,7 +112,9 @@ class PriceListBloc extends Bloc<PriceListEvent, PriceListState> {
 
     final random = Random();
 
-    _mockSocketSub = Stream.periodic(const Duration(milliseconds: 500)).listen((_) {
+    _mockSocketSub = Stream.periodic(const Duration(milliseconds: 500)).listen((
+      _,
+    ) {
       if (state.symbols.isEmpty) return;
 
       final randomSymbol = state.symbols[random.nextInt(state.symbols.length)];

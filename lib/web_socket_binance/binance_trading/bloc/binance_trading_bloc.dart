@@ -6,7 +6,8 @@ import 'package:meta/meta.dart';
 part 'binance_trading_event.dart';
 part 'binance_trading_state.dart';
 
-class BinanceTradingBloc extends Bloc<BinanceTradingEvent, BinanceTradingState> {
+class BinanceTradingBloc
+    extends Bloc<BinanceTradingEvent, BinanceTradingState> {
   final BinanceTradingRepository _repository;
 
   BinanceTradingBloc({required BinanceTradingRepository repository})
@@ -17,31 +18,51 @@ class BinanceTradingBloc extends Bloc<BinanceTradingEvent, BinanceTradingState> 
     on<GetAggTradeBySymbolEvent>(_onGetAggTradeBySymbol);
   }
 
-  void _onBinanceTradingFetched(GetBinanceTradingEvent event, Emitter<BinanceTradingState> emit) async {
+  void _onBinanceTradingFetched(
+    GetBinanceTradingEvent event,
+    Emitter<BinanceTradingState> emit,
+  ) async {
     try {
       emit(state.copyWith(status: BinanceTradingStatus.loading));
       final data = await _repository.getTradingBySymbol(symbol: event.symbol);
       print('=====_onBinanceTradingFetched: $data');
-      emit(state.copyWith(listBids: data["bids"], listAsks: data["asks"], status: BinanceTradingStatus.success));
+      emit(
+        state.copyWith(
+          listBids: data["bids"],
+          listAsks: data["asks"],
+          status: BinanceTradingStatus.success,
+        ),
+      );
     } catch (e) {
       print('=====Error: $e');
       emit(state.copyWith(status: BinanceTradingStatus.failure));
     }
   }
 
-  void _onGetAggTradeBySymbol(GetAggTradeBySymbolEvent event, Emitter<BinanceTradingState> emit) async {
+  void _onGetAggTradeBySymbol(
+    GetAggTradeBySymbolEvent event,
+    Emitter<BinanceTradingState> emit,
+  ) async {
     try {
       emit(state.copyWith(status: BinanceTradingStatus.loading));
       final data = await _repository.getAggTradeBySymbol(symbol: event.symbol);
       print('=====_onGetAggTradeBySymbol: $data');
-      emit(state.copyWith(aggTrade: AggTrade.fromJson(data), status: BinanceTradingStatus.success));
+      emit(
+        state.copyWith(
+          aggTrade: AggTrade.fromJson(data),
+          status: BinanceTradingStatus.success,
+        ),
+      );
     } catch (e) {
       print('=====Error: $e');
       emit(state.copyWith(status: BinanceTradingStatus.failure));
     }
   }
 
-  void _onStartListeningOrderBook(StartListeningOrderBookEvent event, Emitter<BinanceTradingState> emit) async {
+  void _onStartListeningOrderBook(
+    StartListeningOrderBookEvent event,
+    Emitter<BinanceTradingState> emit,
+  ) async {
     await emit.forEach<Map<String, dynamic>>(
       _repository.getOrderBookStream(symbol: event.symbol),
       onData: (res) {
@@ -57,7 +78,10 @@ class BinanceTradingBloc extends Bloc<BinanceTradingEvent, BinanceTradingState> 
             listAsks: data?['asks'] ?? [],
           );
         } else if (stream != null && stream.contains('aggTrade')) {
-          return state.copyWith(status: BinanceTradingStatus.success, aggTrade: AggTrade.fromJson(data ?? {}));
+          return state.copyWith(
+            status: BinanceTradingStatus.success,
+            aggTrade: AggTrade.fromJson(data ?? {}),
+          );
         }
 
         return state.copyWith(status: BinanceTradingStatus.success);

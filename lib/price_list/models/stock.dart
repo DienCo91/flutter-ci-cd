@@ -28,7 +28,13 @@ class Stock extends Equatable {
   @override
   List<Object?> get props => [symbol, joint, change, changePercent, volume];
 
-  Stock copyWith({String? symbol, double? joint, double? change, double? changePercent, double? volume}) {
+  Stock copyWith({
+    String? symbol,
+    double? joint,
+    double? change,
+    double? changePercent,
+    double? volume,
+  }) {
     return Stock(
       symbol: symbol ?? this.symbol,
       joint: joint ?? this.joint,

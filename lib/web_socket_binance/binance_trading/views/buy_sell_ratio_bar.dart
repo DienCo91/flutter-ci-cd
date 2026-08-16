@@ -4,7 +4,11 @@ class BuySellRatioBar extends StatelessWidget {
   final List<dynamic> listBids;
   final List<dynamic> listAsks;
 
-  const BuySellRatioBar({super.key, required this.listBids, required this.listAsks});
+  const BuySellRatioBar({
+    super.key,
+    required this.listBids,
+    required this.listAsks,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +35,10 @@ class BuySellRatioBar extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
       child: Row(
         children: [
-          Text('B $buyText%', style: const TextStyle(color: Colors.grey, fontSize: 12)),
+          Text(
+            'B $buyText%',
+            style: const TextStyle(color: Colors.grey, fontSize: 12),
+          ),
 
           const SizedBox(width: 8.0),
 
@@ -43,7 +50,10 @@ class BuySellRatioBar extends StatelessWidget {
                   Expanded(
                     flex: (buyPercent * 100).toInt(),
                     child: Container(
-                      decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(2.0)),
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(2.0),
+                      ),
                     ),
                   ),
 
@@ -52,7 +62,10 @@ class BuySellRatioBar extends StatelessWidget {
                   Expanded(
                     flex: (sellPercent * 100).toInt(),
                     child: Container(
-                      decoration: BoxDecoration(color: Colors.redAccent, borderRadius: BorderRadius.circular(2.0)),
+                      decoration: BoxDecoration(
+                        color: Colors.redAccent,
+                        borderRadius: BorderRadius.circular(2.0),
+                      ),
                     ),
                   ),
                 ],
@@ -62,7 +75,10 @@ class BuySellRatioBar extends StatelessWidget {
 
           const SizedBox(width: 8.0),
 
-          Text('$sellText% S', style: const TextStyle(color: Colors.grey, fontSize: 12)),
+          Text(
+            '$sellText% S',
+            style: const TextStyle(color: Colors.grey, fontSize: 12),
+          ),
         ],
       ),
     );

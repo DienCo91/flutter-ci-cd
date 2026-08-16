@@ -10,7 +10,8 @@ class FlashingCell extends StatefulWidget {
   State<FlashingCell> createState() => _FlashingCellState();
 }
 
-class _FlashingCellState extends State<FlashingCell> with SingleTickerProviderStateMixin {
+class _FlashingCellState extends State<FlashingCell>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<Color?> _colorAnimation;
   Color _flashColor = Colors.transparent;
@@ -18,7 +19,10 @@ class _FlashingCellState extends State<FlashingCell> with SingleTickerProviderSt
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
 
     _colorAnimation = AlwaysStoppedAnimation(Colors.transparent);
   }
@@ -37,7 +41,10 @@ class _FlashingCellState extends State<FlashingCell> with SingleTickerProviderSt
         _flashColor = Colors.red.withValues(alpha: 0.4);
       }
 
-      _colorAnimation = ColorTween(begin: _flashColor, end: Colors.transparent).animate(_controller);
+      _colorAnimation = ColorTween(
+        begin: _flashColor,
+        end: Colors.transparent,
+      ).animate(_controller);
 
       _controller.forward(from: 0.0);
     }
@@ -56,7 +63,10 @@ class _FlashingCellState extends State<FlashingCell> with SingleTickerProviderSt
       builder: (context, child) {
         return Container(
           color: _colorAnimation.value,
-          child: Text(widget.textValue, style: widget.textStyle ?? const TextStyle(fontFamily: 'Monospace')),
+          child: Text(
+            widget.textValue,
+            style: widget.textStyle ?? const TextStyle(fontFamily: 'Monospace'),
+          ),
         );
       },
     );

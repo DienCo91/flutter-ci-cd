@@ -20,7 +20,10 @@ class TutorialScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(data),
-            ElevatedButton(onPressed: () => context.push('/joke'), child: const Text('Go to Joke')),
+            ElevatedButton(
+              onPressed: () => context.push('/joke'),
+              child: const Text('Go to Joke'),
+            ),
             ElevatedButton(
               onPressed: () => context.push('/counter_riverpod_screen'),
               child: const Text('Go to Counter'),
@@ -31,7 +34,9 @@ class TutorialScreen extends ConsumerWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                for (final reference in ref.container.allProviders(family: familyProvider)) {
+                for (final reference in ref.container.allProviders(
+                  family: familyProvider,
+                )) {
                   ref.invalidate(reference.provider);
                 }
                 ref.invalidate(todoProvider);

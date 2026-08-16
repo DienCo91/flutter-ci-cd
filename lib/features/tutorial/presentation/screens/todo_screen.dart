@@ -15,7 +15,9 @@ class TodoScreen extends StatelessWidget {
             Expanded(
               child: Consumer(
                 builder: (context, ref, child) {
-                  final todoList = ref.watch(todoProvider.select((state) => state.value?.data));
+                  final todoList = ref.watch(
+                    todoProvider.select((state) => state.value?.data),
+                  );
                   if (todoList == null) {
                     return const Center(child: CircularProgressIndicator());
                   }
@@ -31,7 +33,9 @@ class TodoScreen extends StatelessWidget {
                         title: Text('Todo ${todoList[index].id}'),
                         onTap: () {
                           if (todoList[index].id == null) return;
-                          ref.read(todoProvider.notifier).onDeleteTodoById(id: todoList[index].id ?? "");
+                          ref
+                              .read(todoProvider.notifier)
+                              .onDeleteTodoById(id: todoList[index].id ?? "");
                         },
                       );
                     },
@@ -42,7 +46,11 @@ class TodoScreen extends StatelessWidget {
 
             Consumer(
               builder: (context, ref, child) {
-                final isLoadingMore = ref.watch(todoProvider.select((state) => state.value?.isLoadingMore ?? false));
+                final isLoadingMore = ref.watch(
+                  todoProvider.select(
+                    (state) => state.value?.isLoadingMore ?? false,
+                  ),
+                );
 
                 if (isLoadingMore) {
                   return Container(
