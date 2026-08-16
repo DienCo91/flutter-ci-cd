@@ -1,12 +1,15 @@
+import 'package:batterylevel/core/network/dio_client.dart';
 import 'package:batterylevel/todos/models/todo.dart';
 import 'package:dio/dio.dart';
 
 class TodosRepository {
-  final dio = Dio();
+  TodosRepository({Dio? dio}) : _dio = dio ?? DioClient().dio;
+
+  final Dio _dio;
   final String _baseUrl = "https://6447e7537bb84f5a3e4cbd8d.mockapi.io/todo";
-  Future<List<Todo>> getTodos({page = 1, limit = 12}) async {
+  Future<List<Todo>> getTodos({int page = 1, int limit = 12}) async {
     try {
-      final res = await dio.get(
+      final res = await _dio.get(
         _baseUrl,
         queryParameters: {
           "page": page,
@@ -23,7 +26,7 @@ class TodosRepository {
 
   Future<bool> deleteTodoById(String? id) async {
     try {
-      await dio.delete('$_baseUrl/$id');
+      await _dio.delete('$_baseUrl/$id');
       return true;
     } catch (e) {
       throw Exception('Delete todo error: $e');
@@ -32,7 +35,7 @@ class TodosRepository {
 
   Future<Todo> createTodo(Todo todo) async {
     try {
-      final res = await dio.post(_baseUrl, data: todo.toJson());
+      final res = await _dio.post(_baseUrl, data: todo.toJson());
       return Todo.fromJson(res.data);
     } catch (e) {
       throw Exception('Create todo error: $e');
@@ -41,7 +44,7 @@ class TodosRepository {
 
   Future<Todo> updateTodo(Todo todo) async {
     try {
-      final res = await dio.put('$_baseUrl/${todo.id}', data: todo.toJson());
+      final res = await _dio.put('$_baseUrl/${todo.id}', data: todo.toJson());
       return Todo.fromJson(res.data);
     } catch (e) {
       throw Exception('Create todo error: $e');

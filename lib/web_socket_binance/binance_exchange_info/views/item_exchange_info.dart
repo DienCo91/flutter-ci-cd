@@ -12,7 +12,7 @@ class ItemExchangeInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: () {
-        context.push('/binance_trading', extra: state.listExchangeInfo[index]["symbol"]);
+        context.go('/binance_exchange_info/binance_trading', extra: state.listExchangeInfo[index]["symbol"]);
       },
       title: Text(state.listExchangeInfo[index]["symbol"]),
       subtitle: Column(

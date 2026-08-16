@@ -13,7 +13,6 @@ class RowItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final field = context.select(onSelect);
 
-    print("build $index === $symbol");
     return Expanded(flex: 1, child: FlashingCell(textValue: "$field"));
   }
 }

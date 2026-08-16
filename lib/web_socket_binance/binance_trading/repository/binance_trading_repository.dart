@@ -1,10 +1,13 @@
 import 'dart:convert';
 
+import 'package:batterylevel/core/network/dio_client.dart';
 import 'package:dio/dio.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class BinanceTradingRepository {
-  final dio = Dio();
+  BinanceTradingRepository({Dio? dio}) : _dio = dio ?? DioClient().dio;
+
+  final Dio _dio;
   final String _baseUrl = "https://api.binance.com/api/v3";
   final String _wsUrl = "wss://stream.binance.com:9443";
   WebSocketChannel? _channel;
@@ -12,7 +15,7 @@ class BinanceTradingRepository {
 
   Future<Map<String, dynamic>> getTradingBySymbol({required String symbol}) async {
     try {
-      final res = await dio.get('$_baseUrl/depth?symbol=$symbol&limit=$TOTAL_DEPTH');
+      final res = await _dio.get('$_baseUrl/depth?symbol=$symbol&limit=$TOTAL_DEPTH');
       return res.data;
     } catch (e) {
       throw Exception('Load trading pairs error: $e');
@@ -21,7 +24,7 @@ class BinanceTradingRepository {
 
   Future<Map<String, dynamic>> getAggTradeBySymbol({required String symbol}) async {
     try {
-      final res = await dio.get('$_baseUrl/aggTrades?symbol=$symbol&limit=1');
+      final res = await _dio.get('$_baseUrl/aggTrades?symbol=$symbol&limit=1');
       return res.data[0];
     } catch (e) {
       throw Exception('Load trading pairs error: $e');

@@ -1,14 +1,13 @@
 import 'dart:async';
 
-import 'package:batterylevel/cubit/simple_bloc_observer.dart';
 import 'package:batterylevel/layout/app_state_container.dart';
 import 'package:batterylevel/router.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widget_previews.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'firebase_options.dart';
 
 void main() async {
@@ -21,10 +20,9 @@ void main() async {
   // Bloc.observer = SimpleBlocObserver();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  runApp(AppStateContainer(child: const MyApp()));
+  runApp(ProviderScope(child: AppStateContainer(child: const MyApp())));
 }
 
-@Preview(name: 'My Sample Text')
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
