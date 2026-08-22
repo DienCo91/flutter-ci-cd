@@ -1,5 +1,5 @@
 import 'package:batterylevel/provider/theme_provider.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class Profile extends StatefulWidget {

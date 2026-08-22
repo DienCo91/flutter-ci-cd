@@ -1,5 +1,5 @@
 import 'package:batterylevel/genui_page/schema_build.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:genui/genui.dart';
 import 'package:firebase_ai/firebase_ai.dart';
 

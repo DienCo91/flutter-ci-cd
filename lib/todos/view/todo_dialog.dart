@@ -1,6 +1,6 @@
 import 'package:batterylevel/todos/bloc/todos_bloc.dart';
 import 'package:batterylevel/todos/models/todo.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TodoDialog extends StatefulWidget {

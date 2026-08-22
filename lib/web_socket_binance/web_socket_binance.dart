@@ -2,7 +2,7 @@ import 'package:batterylevel/web_socket_binance/binance_exchange_info/bloc/binan
 import 'package:batterylevel/web_socket_binance/binance_exchange_info/repository/binance_exchange_info_repository.dart';
 import 'package:batterylevel/web_socket_binance/binance_exchange_info/views/list_exchange_info.dart';
 import 'package:batterylevel/web_socket_binance/web_socket_binance_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/state_manager.dart';
 

@@ -3,7 +3,7 @@ import 'package:batterylevel/todos/controller/todo_controller.dart';
 import 'package:batterylevel/todos/repository/todos_repository.dart';
 import 'package:batterylevel/todos/view/todo_dialog.dart';
 import 'package:batterylevel/todos/view/todo_list.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/instance_manager.dart';
 

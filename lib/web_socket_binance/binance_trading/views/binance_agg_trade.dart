@@ -1,5 +1,5 @@
 import 'package:batterylevel/web_socket_binance/binance_trading/models/agg_trade.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class BinanceAggTrade extends StatelessWidget {
   final AggTrade aggTrade;

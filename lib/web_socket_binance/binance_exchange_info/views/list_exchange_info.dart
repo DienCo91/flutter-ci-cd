@@ -1,6 +1,6 @@
 import 'package:batterylevel/web_socket_binance/binance_exchange_info/bloc/binance_exchange_info_bloc.dart';
 import 'package:batterylevel/web_socket_binance/binance_exchange_info/views/item_exchange_info.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ListExchangeInfo extends StatelessWidget {

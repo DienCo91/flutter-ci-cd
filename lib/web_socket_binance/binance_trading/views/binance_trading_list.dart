@@ -3,7 +3,7 @@ import 'package:batterylevel/web_socket_binance/binance_trading/models/agg_trade
 import 'package:batterylevel/web_socket_binance/binance_trading/views/binance_agg_trade.dart';
 import 'package:batterylevel/web_socket_binance/binance_trading/views/buy_sell_ratio_bar.dart';
 import 'package:batterylevel/web_socket_binance/binance_trading/views/flashing_cell.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BinanceTradingList extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:batterylevel/web_socket_binance/binance_exchange_info/bloc/binance_exchange_info_bloc.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:go_router/go_router.dart';
 
 class ItemExchangeInfo extends StatelessWidget {

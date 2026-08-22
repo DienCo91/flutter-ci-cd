@@ -18,7 +18,7 @@ import 'package:batterylevel/weather/view/weather_page.dart';
 import 'package:batterylevel/web_socket_binance/binance_trading/views/binance_trading.dart';
 import 'package:batterylevel/web_socket_binance/web_socket_binance.dart';
 import 'package:batterylevel/web_socket_binance/web_socket_binance_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/state_manager.dart';
 import 'package:go_router/go_router.dart';

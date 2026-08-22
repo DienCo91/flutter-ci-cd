@@ -4,7 +4,7 @@ import 'package:batterylevel/purchase/views/purchase_consumable.dart';
 import 'package:batterylevel/purchase/views/purchase_non_consumable.dart';
 import 'package:batterylevel/purchase/views/purchase_non_renew_sub.dart';
 import 'package:batterylevel/utils/image_assets.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PurchaseView extends StatelessWidget {

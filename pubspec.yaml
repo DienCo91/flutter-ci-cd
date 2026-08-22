@@ -67,6 +67,7 @@ dependencies:
   riverpod_annotation: ^4.0.3
   riverpod_lint: ^3.1.4
 
+  material_ui: any
 dev_dependencies:
   flutter_test:
     sdk: flutter

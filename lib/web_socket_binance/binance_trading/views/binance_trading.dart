@@ -1,7 +1,7 @@
 import 'package:batterylevel/web_socket_binance/binance_trading/bloc/binance_trading_bloc.dart';
 import 'package:batterylevel/web_socket_binance/binance_trading/repository/binance_trading_repository.dart';
 import 'package:batterylevel/web_socket_binance/binance_trading/views/binance_trading_list.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BinanceTrading extends StatelessWidget {

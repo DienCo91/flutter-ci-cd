@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:batterylevel/sql_lite/dog_database.dart';
 import 'package:batterylevel/sql_lite/model/dog.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class SqlLitePage extends StatefulWidget {
   const SqlLitePage({super.key});

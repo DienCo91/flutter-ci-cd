@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:batterylevel/helper/ads_helper.dart';
 import 'package:batterylevel/interacting/use_pigeon.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';

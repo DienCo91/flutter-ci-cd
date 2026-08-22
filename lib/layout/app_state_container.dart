@@ -1,5 +1,5 @@
 import 'package:batterylevel/provider/theme_provider.dart';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class AppStateContainer extends StatefulWidget {
   final Widget child;
